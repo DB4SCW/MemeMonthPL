@@ -1,0 +1,162 @@
+/* General body styling */
+
+body {
+    font-family: "Tahoma", sans-serif;
+    margin: 10px 0 0 0; /* Top margin to create space for the title bar */
+    background: url('./wallpaper.png') no-repeat center center fixed; /* Windows XP wallpaper */
+    background-size: cover;
+    color: #000000;
+    
+}
+
+
+/* Tab content styling */
+.tab-content {
+    
+    display: none;
+    padding: 10px;
+    margin-top: 2px;
+
+    border: 1px solid #A9A9A9; /* Light gray border */
+    background: #FFFFFF; /* White background for content */
+    box-shadow: inset 1px 1px 2px #FFFFFF, inset -1px -1px 2px #A9A9A9; /* Beveled effect */
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* Center the window in the middle of the screen */
+.window {
+    position: absolute; /* Position relative to the viewport */
+    left: 50%; /* Move to the horizontal center */
+    transform: translate(-50%, 0%); /* Offset by half its width and height */
+    width: 80%; /* Adjust the width as needed */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better visibility */
+    border: 2px solid #000080; /* Optional: Add a border to match the XP style */
+    background: #E4E4E4; /* Optional: Add a background color for the window */
+ /* Adjust the top margin to create space for the title bar */
+    
+    
+}
+
+/* Set a larger font size for buttons */
+button {
+    font-size: 16px; /* Adjust the size as needed */
+    font-family: "Tahoma", sans-serif; /* Ensure consistent font style */
+}
+
+/* add space above title bar to ensure that top of website will be visible when taller than*/
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    opacity: 1; /* Fully visible */
+    transition: opacity 1s ease-out; /* Smooth fade-out effect */
+
+    /* Reset inherited styles */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: normal;
+    text-align: center;
+}
+
+#loading-screen.fade-out {
+    opacity: 0; /* Fully transparent */
+    pointer-events: none; /* Prevent interaction during fade-out */
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo .top {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.logo .mid {
+    font-size: 46px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.logo .mid span {
+    font-size: 22px;
+    color: #FF6821;
+}
+
+.logo .bottom {
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 150px;
+    height: 10px;
+    border: 2px solid #b2b2b2;
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+}
+
+.box {
+    width: 9px;
+    height: 100%;
+    background: linear-gradient(to bottom, #2838c7 0%, #5979ef 50%, #2838c7 100%);
+    margin-right: 2px;
+    animation: loader 2s infinite linear;
+}
+
+@keyframes loader {
+  0% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+.easter-egg-window {
+    font-family: "Tahoma", sans-serif;
+    color: #000;
+    border-radius: -5px;
+}
+.easter-egg-window .title-bar {
+
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.easter-egg-window .title-bar-text {
+    font-weight: bold;
+}
+.easter-egg-window .title-bar-controls button {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}
