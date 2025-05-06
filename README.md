@@ -4,4 +4,4 @@ Projekt strony multi-zakładkowej utrzymany w stylu pierwotnej macierzystej stro
 
 ## Po co?
 
-Projekt ten jest chęcią powtózenia sobie HTML + CSS + JS oraz chęcią rozpromowania akcji dyplomowej krótkofalarskiej w służbie radiokomunikacyjnej amatorskiej (HAM Radio).
+Projekt ten jest chęcią powtózenia sobie HTML + CSS + JS oraz chęcią rozpromowania akcji dyplomowej krótkofalarskiej w służbie radiokomunikacyjnej amatorskiej (HAM Radio). 
