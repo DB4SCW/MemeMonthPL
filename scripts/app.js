@@ -208,15 +208,19 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   <div class="window-body" style="display: flex; flex-direction: column; align-items: center;">
     <p>Easter Egg!</p>
-    <video controls autoplay style="max-width: 100%; margin-bottom: 10px;">
+    <video id="easter-egg-video" controls autoplay style="max-width: 100%; margin-bottom: 10px;">
       <source src="video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <button>OK</button>
   </div>
 </div>
-    `;
+`;
         document.body.appendChild(easterEggWindow);
+
+        // Ensure the video is not muted
+        const video = document.getElementById('easter-egg-video');
+        video.muted = false;
+        video.play();
 
         // Style the new window
         easterEggWindow.style.position = 'fixed';
@@ -611,6 +615,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 tabJContent.appendChild(section);
             });
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate status bar
+            document.getElementById('status-version').textContent = texts.status_bar.version;
+            document.getElementById('status-ptt-message').textContent = texts.status_bar.ptt_message;
+            document.getElementById('status-transmission-message').textContent = texts.status_bar.transmission_message;
+
+            // Update CPU usage dynamically
+            const cpuUsageElement = document.getElementById('status-cpu-usage');
+            setInterval(() => {
+                const randomCpuUsage = Math.floor(Math.random() * 100) + 1; // Random value between 1 and 100
+                cpuUsageElement.textContent = `${texts.status_bar.cpu_usage}${randomCpuUsage}%`;
+            }, 2000); // Update every 2 seconds
         })
         .catch(error => {
             console.error('Error loading texts.json:', error);

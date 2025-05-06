@@ -62,7 +62,14 @@
             <p id="certificate-info" style="font-weight: bold;"></p>
           <button id="certificate-button" style="display: none, bold;"></button>
         </div>
+
+        <h4>This info in foreign languages:</h4>
+        <section class="field-row">
+          <a href="https://www.db4scw.de/meme-appreciation-month/"><button>Deutsch/German</button></a>
+          <a href="https://mememonth.org/"><button>English</button></a>
+        </section>
     </article>
+    
 
     <!-- Tab B -->
     <article role="tabpanel" hidden id="tab-B">
@@ -170,13 +177,12 @@
     </div>
 
 
-    <div class="status-bar" div style="bottom: 50px;">
-        <p class="status-bar-field" style="font-family: Arial;">Wersja 1.0.0</p>
-        <p class="status-bar-field" style="font-family: Arial;">Naciśnij PTT, aby uzyskać więcej zabawy.</p>
-        <p class="status-bar-field" style="font-family: Arial;">Transmisja wszystkich twoich wrażliwych haseł na 27.025 MHz USB.....21.37% zakończona</p>
-        <p class="status-bar-field" style="font-family: Arial;" style="justify-content: flex-end">Użycie CPU: 76%</p>
+    <div class="status-bar" style="bottom: 50px;">
+        <p class="status-bar-field" id="status-version" style="font-family: Arial;"></p>
+        <p class="status-bar-field" id="status-ptt-message" style="font-family: Arial;"></p>
+        <p class="status-bar-field" id="status-transmission-message" style="font-family: Arial;"></p>
+        <p class="status-bar-field" id="status-cpu-usage" style="font-family: Arial; justify-content: flex-end;"></p>
         <p class="status-bar-field" id="countdown-timer" style="font-family: Arial; justify-content: flex-end;"></p>
-        
     </div>
 
 

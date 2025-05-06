@@ -111,5 +111,11 @@
     "info_after": "Certyfikaty za Miesiąc Doceniania Memów 2025 są teraz dostępne!",
     "button_text": "Pobierz certyfikat",
     "button_url": "https://hamawardz.app/logcheck/meme-appreciation-award-2025"
+  },
+  "status_bar": {
+    "version": "Wersja 1.0.0",
+    "ptt_message": "Naciśnij PTT, aby uzyskać więcej zabawy.",
+    "transmission_message": "Transmisja wszystkich twoich wrażliwych haseł na 27.025 MHz USB.....21.37% zakończona",
+    "cpu_usage": "Użycie CPU: "
   }
 }
