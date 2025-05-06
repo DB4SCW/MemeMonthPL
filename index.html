@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>Miesiąc Memów 3 : Odnalezione!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/xp.css">    
@@ -51,255 +51,107 @@
               <button role="tab" aria-controls="tab-J">Informacje prawne</button>
             </menu>
         </section>
+
         <div id="tab1" class="tab-content active">
-            <article role="tabpanel" id="tab-A" style="size: A4">
-                <h3>Czym jest "Miesiąc Doceniania Memów"?</h3>
-                <p>Archiwa mówią, że rozpoczęło się to w Kanadzie jako pomysł Bena (VA4BEN), aby szerzyć radość i dobry humor wśród radioamatorów na falach radiowych.</p>
-                <p>W rzeczywistości jest to sposób dla młodych radioamatorów na zabawę, używanie fajnych znaków wywoławczych i wspólne uczestnictwo w ciekawej aktywności.</p>
-                <p>Wszystko zaczęło się w 2022 roku od pierwszego Miesiąca Doceniania Memów i kultowych znaków wywoławczych, takich jak VB4LIGMA, VB3YEET, VC9CATGIRL, VC3RIKROLL, VC3DEEZ i wiele innych.</p>
-                <p>Druga edycja w 2023 roku przyniosła znaki wywoławcze takie jak VC9FEMBOY, DZ2NUTS, PD33ZDOGE i DL0NGCAT.</p>
-                <p>2024 rok był już czwartą edycją. W teorii. Taki jest żart.</p>
-                <p>2025 to trzecia edycja, ponieważ udało nam się ją odnaleźć w 2024 roku.</p>
-                <h4>Czym jest mem i dlaczego należy go doceniać?</h4>
-                <p>Oficjalnie, według słownika, mem to "obraz, wideo, tekst itp., zazwyczaj o humorystycznym charakterze, który jest kopiowany i szybko rozpowszechniany przez użytkowników internetu, często z drobnymi zmianami".</p>
-                <p>W skrócie - mem to coś, co większość młodych ludzi zna i uważa za zabawne.</p>
-                <p>Jeśli ten zabawny element trafi do krótkofalarstwa i przyciągnie młodych ludzi - będzie idealnie, prawda?</p>
-                <h4>Certyfikat Doceniania Memów 2025</h4>
-                <p>Tym razem, za swoje łączności z wszystkimi znakami wywoławczymi związanymi z memami, możesz zdobyć fantastyczne certyfikaty!</p></p>
-                <p>Możesz sprawdzić, czy się kwalifikujesz i pobrać swój certyfikat na tej stronie:</p>
-                <p id="certificate-info"><b>Certyfikaty za Miesiąc Doceniania Memów 2025 nie są jeszcze dostępne. Wydarzenie rozpocznie się 15 czerwca 2025. Proszę wrócić później!</b></p>
-                <button id="certificate-button" style="display: none;" onclick="window.location.href='https://hamawardz.app/logcheck/meme-appreciation-award-2025'">Pobierz certyfikat</button>
-                <script>
-                  const eventStartDate = new Date('2025-06-15');
-                  const today = new Date();
-                  const certificateInfo = document.getElementById('certificate-info');
-                  const certificateButton = document.getElementById('certificate-button');
+    <!-- Tab A -->
+    <article role="tabpanel" id="tab-A" style="size: A4">
+        <h3 id="tab-A-title" data-translate="tab-a-title"></h3>
+        <div id="tab-A-sections" data-translate="tab-a-sections"></div>
 
-                  if (today >= eventStartDate) {
-                  certificateInfo.textContent = "Certyfikaty za Miesiąc Doceniania Memów 2025 są teraz dostępne!";
-                  certificateButton.style.display = "inline-block";
-                  }
-                </script>
-                  
+        <div id="certificate-section">
+            <p id="certificate-info" style="font-weight: bold;"></p>
+          <button id="certificate-button" style="display: none, bold;"></button>
+        </div>
+    </article>
 
-                <p></p>
-                <hr>
-                <h4>Ta informacja w innych językach:</h4>
-                <section class="field-row">
-                    <a href="https://www.db4scw.de/meme-appreciation-month/"><button>Niemiecki</button></a>
-                    <a href="https://mememonth.org/"><button>Angielski</button></a>
-                </section>
-            </article>
-            <article role="tabpanel" hidden id="tab-B">
-             
-                <h3>Kto w tym uczestniczy? Ilu operatorów może być?</h3>
+    <!-- Tab B -->
+    <article role="tabpanel" hidden id="tab-B">
+      <h3 id="tab-B-title" data-translate="tab-b-title"></h3>
+        <table id="callsignTable">
+            <thead>
+                <tr>
 
-                <p>
-                  Następujące znaki wywoławcze zostały zarejestrowane na Miesiąc Doceniania Memów:
-                    <p>IARU Region 1:
-                    <ul>
-                      <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DC0NORRIS" style="color: black; padding-left: 5px;">DC0NORRIS</a></li> 
-                      <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DL0LOL" style="color: black; padding-left: 5px;">DL0LOL</a></li> 
-                      <li><span class="fi fi-at fis"></span><a href="https://qrz.com/db/OE01MIKU" style="color: black; padding-left: 5px;">OE01MIKU</a></li>
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB0OTY" style="color: black; padding-left: 5px;">GB0OTY</a></li> 
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB4NGS" style="color: black; padding-left: 5px;">GB4NGS</a></li> 
-                      <li><span class="fi fi-hu fis"></span><a href="https://qrz.com/db/HA6RID" style="color: black; padding-left: 5px;">HA6RID</a></li> 
-                      <li><span class="fi fi-pl fis"></span><a href="https://qrz.com/db/SO2NIC" style="color: black; padding-left: 5px;">SO2NIC</a></li> 
-                  </p>
-                  <p>IARU Region 2:
-                    <ul>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC2NORRIS" style="color: black; padding-left: 5px;">VC2NORRIS</a></li> 
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB2CATGIRL" style="color: black; padding-left: 5px;">VB2CATGIRL</a></li> 
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB2CAP" style="color: black; padding-left: 5px;">VB2CAP</a></li> 
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K0K" style="color: black; padding-left: 5px;">K0K</a></li>
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K4B" style="color: black; padding-left: 5px;">K4B</a></li> 
-                    </ul>
-                  </p>
-                  <p>IARU Region 3:
-                    <ul>
-                      <li>Dla tego regionu nie ogłoszono jeszcze uczestników. Sprawdź później!</li>
-                    </ul>
-                  </p>
-                </p>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    
+    </article>
 
-                
-                <p>Rzeczywiści operatorzy tych znaków mogą się zmieniać w trakcie wydarzenia, aby jak najlepiej wykorzystać nasze środki (płaczemy z powodu opłat za znaki wywoławcze).</p>
-                <hr>
-                <h3>Jak dołączyć do szaleństwa?</h3>
-                <a rel="noopener" target="_blank" href="https://discord.gg/fyvjGkky7W"><img class="hover-shadow" src="https://mememonth.org/join-our-discord.png" alt="Dołącz do naszego serwera Discord" style="max-width:200px;border-radius:5px;"></a>
-            </article>
-            <article role="tabpanel" hidden id="tab-C">
-                <h3>Kiedy to się dzieje?</h3>
-                <p>Wydarzenie będzie aktywne od 15 czerwca 2025 do 15 sierpnia 2025.</p>
-                <p>Grupa operatorów zaangażowanych w to wydarzenie będzie utrzymywać znaki wywoławcze memów na falach przez większość czasu trwania wydarzenia. Z pewnością, przy odpowiednim wysiłku, również możesz dodać znak mema do swojego dziennika.</p>
-            </article>
-            <article role="tabpanel" hidden id="tab-D">
-                <h3>Co i gdzie operujemy?</h3>
-                <p>Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).</p>
-                <p>Planowane są również operacje SSB oraz inne tryby cyfrowe, takie jak OLIVIA, JS8, a może Hellschreiber? Kto wie.</p>
-                <p>Jeśli jesteś łowcą POTA, miej oko na niektóre aktywacje POTA.</p>
+    <!-- Tab C -->
+    <article role="tabpanel" hidden id="tab-C">
+        <h3 id="tab-C-title"></h3>
+        <p id="tab-C-content"></p>
+    </article>
 
-                <h4>Na których częstotliwościach można nas znaleźć?</h4>
-                <p>Prawdopodobne operacje obejmą całe HF (160m-10m), a także 2m, 70cm i pracę satelitarną QO-100 (dla tych w zasięgu).</p>
-            </article>
-            <article role="tabpanel" hidden id="tab-E">
-                <h3>Dlaczego to robimy?</h3>
-                <p>Nuda, psoty i za dużo wolnego czasu (^:</p>
-                <p>Poza tym potrzebujemy więcej młodych krótkofalowców ;)</p>
-            </article>
-            <article role="tabpanel" hidden id="tab-F">
-                <h3>Jak zdobyć jedną z tych epickich kart QSL z memami?</h3>
-                <p>Zasady QSL różnią się w zależności od operatora. Proszę sprawdzić strony QRZ każdego znaku wywoławczego.</p>
-                <hr>
-                <h4>Przykłady wcześniejszych kart QSL:</h4>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
-                  <img style="width: auto; height: 200px;" src="https://mememonth.org/DL0LOL_QSL_card.jpg">
-                  <img style="width: auto; height: 200px;" src="https://mememonth.org/DL0NGCAT_QSL_card.jpg">
-                  <img style="width: auto; height: 200px;" src="https://mememonth.org/DF4CEPALM_QSL_card.jpg">
-                </div>
-            </article>
-            <article role="tabpanel" hidden id="tab-G">
-                <h3>Miesiąc Doceniania Memów 4: Poszukiwanie Trzeciego</h3>
-                <h3 style="font-size: 20px;">Archiwum Znaków Wywoławczych</h3>
-                <p>
-                  Następujące znaki wywoławcze były aktywne podczas Miesiąca Doceniania Memów 4: Poszukiwanie Trzeciego od 15 czerwca 2024 do 15 sierpnia 2024:
-                  <p>IARU Region 1:
-                    <ul>
-                      <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DF4CEPALM" style="color: black; padding-left: 5px;">DF4CEPALM</a></li>
-                      <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DL0LOL" style="color: black; padding-left: 5px;">DL0LOL</a></li>
-                      <li><span class="fi fi-nl fis"></span><a href="https://qrz.com/db/PD6SENPAI" style="color: black; padding-left: 5px;">PD6SENPAI</a></li>
-                      <li><span class="fi fi-at fis"></span><a href="https://qrz.com/db/OE51DEEYE" style="color: black; padding-left: 5px;">OE51DEEYE</a></li>
-                      <li><span class="fi fi-be fis"></span><a href="https://qrz.com/db/OO0F" style="color: black; padding-left: 5px;">OO0F</a></li>
-                      <li><span class="fi fi-be fis"></span><a href="https://qrz.com/db/OR4L" style="color: black; padding-left: 5px;">OR4L</a></li>
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB0OTY" style="color: black; padding-left: 5px;">GB0OTY</a></li>
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB0NGO" style="color: black; padding-left: 5px;">GB0NGO</a></li>
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/G4SSY" style="color: black; padding-left: 5px;">G4SSY</a></li>
-                      <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/G1SUS" style="color: black; padding-left: 5px;">G1SUS</a></li>
-                      <li><span class="fi fi-se fis"></span><a href="https://qrz.com/db/7S0BRUH" style="color: black; padding-left: 5px;">7S0BRUH</a></li>
-                      <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM5OON" style="color: black; padding-left: 5px;">TM5OON</a></li>
-                      <li><span class="fi fi-ro fis"></span><a href="https://qrz.com/db/YR1CKROLL" style="color: black; padding-left: 5px;">YR1CKROLL</a></li>
-                      <li><span class="fi fi-es fis"></span><a href="https://qrz.com/db/EG1TBDICS" style="color: black; padding-left: 5px;">EG1TBDICS</a></li>
-                    </ul>
-                  </p>
-                  <p>IARU Region 2:
-                    <ul>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB4TESTING" style="color: black; padding-left: 5px;">VB4TESTING</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB2THEGAME" style="color: black; padding-left: 5px;">VB2THEGAME</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB2KILOWAT" style="color: black; padding-left: 5px;">VB2KILOWAT</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VA6INA" style="color: black; padding-left: 5px;">VA6INA</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC7ZALGO" style="color: black; padding-left: 5px;">VC7ZALGO</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC7HORSE" style="color: black; padding-left: 5px;">VC7HORSE</a></li>
-                      <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC7F" style="color: black; padding-left: 5px;">VC7F</a></li>
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K0K" style="color: black; padding-left: 5px;">K0K</a></li>
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K3K" style="color: black; padding-left: 5px;">K3K</a></li>
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K4T" style="color: black; padding-left: 5px;">K4T</a></li> <!-- WT5A --> 
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/N9E" style="color: black; padding-left: 5px;">N9E</a></li> <!-- WT5A --> 
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/W4L" style="color: black; padding-left: 5px;">W4L</a></li> <!-- WT5A --> 
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K1D" style="color: black; padding-left: 5px;">K1D</a></li> <!-- KO4VXD -->
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K1L" style="color: black; padding-left: 5px;">K1L</a></li> <!-- KO4VXD -->
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/W3B" style="color: black; padding-left: 5px;">W3B</a></li> <!-- KO4ZMC -->
-                      <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K4B" style="color: black; padding-left: 5px;">K4B</a></li> <!-- KO4ZMC -->
-                    </ul>
-                  </p>
-                  <p>IARU Region 3:
-                    <ul>
-                      <li><span class="fi fi-ph fis"></span><a href="https://qrz.com/db/DU0LINGO" style="color: black; padding-left: 5px;">DU0LINGO</a></li>
-                    </ul>
-                  
-                </p>
-                <h3>Sprawdzenie nagród:</h3>
-                <a href="https://hamawardz.app/logcheck/meme-appreciation-award-2024"><button>Sprawdź nagrodę za Miesiąc Doceniania Memów 4 (2024)</button></a>
-            </article>
-            <article role="tabpanel" hidden id="tab-H">
-    <h3>Miesiąc Doceniania Memów 2: Elektryczne Boogaloo</h3>
-    <h3 style="font-size: 20px;">Archiwum Znaków Wywoławczych</h3>
-    <p>
-      Następujące znaki wywoławcze były aktywne podczas Miesiąca Doceniania Memów 2: Elektryczne Boogaloo od 15 czerwca 2023 do 15 sierpnia 2023:
-      <p>IARU Region 1:
-        <ul>
-          <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DL0LOL" style="color: black; padding-left: 5px;">DL0LOL</a></li>
-          <li><span class="fi fi-de fis"></span><a href="https://qrz.com/db/DL0NGCAT" style="color: black; padding-left: 5px;">DL0NGCAT</a></li>
-          <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB4LLs" style="color: black; padding-left: 5px;">GB4LLS</a></li>
-          <li><span class="fi fi-gb fis"></span><a href="https://qrz.com/db/GB0NPC" style="color: black; padding-left: 5px;">GB0NPC</a></li>
-          <li><span class="fi fi-nl fis"></span><a href="https://qrz.com/db/PD33ZDOGE" style="color: black; padding-left: 5px;">PD33ZDOGE</a></li>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM0GUS" style="color: black; padding-left: 5px;">TM0GUS</a></li>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM4RIO" style="color: black; padding-left: 5px;">TM4RIO</a></li>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM0NKAS" style="color: black; padding-left: 5px;">TM0NKAS</a></li>
-        </ul>
-      </p>
-      <p>IARU Region 2:
-        <ul>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB4LLS" style="color: black; padding-left: 5px;">VB4LLS</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB1FLIP" style="color: black; padding-left: 5px;">VB1FLIP</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB3BACON" style="color: black; padding-left: 5px;">VB3BACON</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB6WOKE" style="color: black; padding-left: 5px;">VB6WOKE</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC7BEPIS" style="color: black; padding-left: 5px;">VC7BEPIS</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC9FEMBOY" style="color: black; padding-left: 5px;">VC9FEMBOY</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC2STONKS" style="color: black; padding-left: 5px;">VC2STONKS</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC3PWEOR" style="color: black; padding-left: 5px;">VC3PWEOR</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K3K" style="color: black; padding-left: 5px;">K3K</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K0K" style="color: black; padding-left: 5px;">K0K</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/W4P" style="color: black; padding-left: 5px;">W4P</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/N1O" style="color: black; padding-left: 5px;">N1O</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/K1L" style="color: black; padding-left: 5px;">K1L</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/N9E" style="color: black; padding-left: 5px;">N9E</a></li>
-          <li><span class="fi fi-us fis"></span><a href="https://qrz.com/db/W0W" style="color: black; padding-left: 5px;">W0W</a></li>
-        </ul>
-      </p>
-      <p>IARU Region 3:
-        <ul>
-          <li><span class="fi fi-ph fis"></span><a href="https://qrz.com/db/DZ2NUTS" style="color: black; padding-left: 5px;">DZ2NUTS</a></li>
-        </ul>
-      </p>
-    </p>
-    <h3>Sprawdzenie nagród:</h3>
-    <a href="https://hamawardz.app/logcheck/meme-appreciation-award-2023"><button>Sprawdź nagrodę za Miesiąc Doceniania Memów 2 (2023)</button></a>
-</article>
-            <article role="tabpanel" hidden id="tab-I">
-    <h3>Miesiąc Doceniania Memów</h3>
-    <h3 style="font-size: 20px;">Archiwum Znaków Wywoławczych</h3>
-    <p>
-      Następujące znaki wywoławcze były aktywne podczas pierwszego Miesiąca Doceniania Memów od 25 czerwca 2022 do 5 sierpnia 2022:
-      <p>IARU Region 1:
-        <ul>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM1SSOU" style="color: black; padding-left: 5px;">TM1SSOU</a></li>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM0WO" style="color: black; padding-left: 5px;">TM0WO</a></li>
-          <li><span class="fi fi-fr fis"></span><a href="https://qrz.com/db/TM0RBIN" style="color: black; padding-left: 5px;">TM0RBIN</a></li>
-        </ul>
-      </p>
-      <p>IARU Region 2:
-        <ul>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB4LIGMA" style="color: black; padding-left: 5px;">VB4LIGMA</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB3YEET" style="color: black; padding-left: 5px;">VB3YEET</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC9CATGIRL" style="color: black; padding-left: 5px;">VC9CATGIRL</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC3DEEZ" style="color: black; padding-left: 5px;">VC3DEEZ</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB3HARAMBE" style="color: black; padding-left: 5px;">VB3HARAMBE</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VC3RIKROLL" style="color: black; padding-left: 5px;">VC3RIKROLL</a></li>
-          <li><span class="fi fi-ca fis"></span><a href="https://qrz.com/db/VB6DANK" style="color: black; padding-left: 5px;">VB6DANK</a></li>
-        </ul>
-      </p>
-      <p>IARU Region 3:
-        <ul>
-          <li>Brak zarejestrowanych znaków wywoławczych w Regionie 3 w 2022 roku.</li>
-        </ul>
-      </p>
-    </p>
-    <h3>Sprawdzenie nagród:</h3>
-    <p>Nie było nagród w 2022 roku.</p>
-</article>
-            <article role="tabpanel" hidden id="tab-J">
-                <h3>Impressum</h3>
-                <p><a href="https://legal.wolf.taipei/impressum.html">Kliknij tutaj, aby zobaczyć Impressum</a></p>
-                <h3>Deklaracja prywatności</h3>
-                <p><a href="https://legal.wolf.taipei/privacy.html">Kliknij tutaj, aby zobaczyć Deklarację prywatności</a>  <span class="fi fi-de"></span> <span class="fi fi-gb"></span></p>
-            </article>
+    <!-- Tab D -->
+    <article role="tabpanel" hidden id="tab-D">
+        <h3 id="tab-D-title"></h3>
+        <p id="tab-D-content"></p>
+    </article>
 
-            <article role="tabpanel" hidden id="tab-K">
-                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/yrJ_lzYGJdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div></div>
-            </article>
+    <!-- Tab E -->
+    <article role="tabpanel" hidden id="tab-E">
+        <h3 id="tab-E-title"></h3>
+        <p id="tab-E-content"></p>
+    </article>
 
+    <!-- Tab F -->
+    <article role="tabpanel" hidden id="tab-F">
+        <h3 id="tab-F-title"></h3>
+        <p id="tab-F-content"></p>
+    </article>
+
+    <!-- Tab G -->
+    <article role="tabpanel" hidden id="tab-G">
+        <h3 id="tab-G-title"></h3>
+        <table id="tab-G-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Callsign</th>
+                    <th>Main Operator</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </article>
+
+    <!-- Tab H -->
+    <article role="tabpanel" hidden id="tab-H">
+        <h3 id="tab-H-title"></h3>
+        <table id="tab-H-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Callsign</th>
+                    <th>Main Operator</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </article>
+
+    <!-- Tab I -->
+    <article role="tabpanel" hidden id="tab-I">
+        <h3 id="tab-I-title"></h3>
+        <table id="tab-I-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Callsign</th>
+                    <th>Main Operator</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </article>
+
+    <!-- Dodaj pozostałe zakładki tutaj -->
+</div>
 
         <section class="field-row" style="justify-content: flex-end">
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><button>OK</button></a>

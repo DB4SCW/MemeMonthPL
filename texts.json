@@ -1,0 +1,83 @@
+{
+  "tabs": {
+    "tab-A": {
+      "title": "Czym jest \"Miesiąc Doceniania Memów\"?",
+      "subsections": [
+        {
+          "subtitle": "Historia",
+          "content": [
+            "Archiwa mówią, że rozpoczęło się to w Kanadzie jako pomysł Bena (VA4BEN), aby szerzyć radość i dobry humor wśród radioamatorów na falach radiowych.",
+            "W rzeczywistości jest to sposób dla młodych radioamatorów na zabawę, używanie fajnych znaków wywoławczych i wspólne uczestnictwo w ciekawej aktywności.",
+            "Wszystko zaczęło się w 2022 roku od pierwszego Miesiąca Doceniania Memów i kultowych znaków wywoławczych, takich jak VB4LIGMA, VB3YEET, VC9CATGIRL, VC3RIKROLL, VC3DEEZ i wiele innych.",
+            "Druga edycja w 2023 roku przyniosła znaki wywoławcze takie jak VC9FEMBOY, DZ2NUTS, PD33ZDOGE i DL0NGCAT.",
+            "2024 rok był już czwartą edycją. W teorii. Taki jest żart.",
+            "2025 to trzecia edycja, ponieważ udało nam się ją odnaleźć w 2024 roku."
+          ]
+        },
+        {
+          "subtitle": "Czym jest mem i dlaczego należy go doceniać?",
+          "content": [
+            "Oficjalnie, według słownika, mem to obraz, wideo, tekst itp., zazwyczaj o humorystycznym charakterze, który jest kopiowany i szybko rozpowszechniany przez użytkowników internetu, często z drobnymi zmianami. W skrócie - mem to coś, co większość młodych ludzi zna i uważa za zabawne.",
+            "W rzeczywistości jest to sposób dla młodych radioamatorów na zabawę, używanie fajnych znaków wywoławczych i wspólne uczestnictwo w ciekawej aktywności.",
+            "Jeśli ten zabawny element trafi do krótkofalarstwa i przyciągnie młodych ludzi - będzie idealnie, prawda?"
+          ]
+        },
+        {
+          "subtitle": "Certyfikat Doceniania Memów 2025",
+          "content": [
+            "Tym razem, za swoje łączności z wszystkimi znakami wywoławczymi związanymi z memami, możesz zdobyć fantastyczne certyfikaty!",
+            "Możesz sprawdzić, czy się kwalifikujesz i pobrać swój certyfikat na tej stronie:"
+          ]
+        }
+      ]
+    },
+    "tab-B": {
+      "title": "Kto w tym uczestniczy? Ilu operatorów może być?",
+      "content": [
+        "Następujące znaki wywoławcze zostały zarejestrowane na Miesiąc Doceniania Memów:"
+      ],
+      "no_data_message": "Brak danych dla tego regionu, może dołączysz do nas? :D",
+      "error_message": "Błąd podczas ładowania danych"
+    },
+    "tab-C": {
+      "title": "Kiedy to się dzieje?",
+      "content": "Wydarzenie będzie aktywne od 15 czerwca 2025 do 15 sierpnia 2025."
+    },
+    "tab-D": {
+      "title": "Co i gdzie operujemy?",
+      "content": "Najprawdopodobniej będziemy operować głównie na FT8..."
+    },
+    "tab-E": {
+      "title": "Dlaczego to robimy?",
+      "content": "Chcemy szerzyć radość i dobry humor wśród radioamatorów na całym świecie. To także świetna okazja, aby przyciągnąć młodych ludzi do krótkofalarstwa."
+    },
+    "tab-F": {
+      "title": "Jak mogę wziąć udział?",
+      "content": "Możesz wziąć udział, rejestrując swój znak wywoławczy i dołączając do naszej społeczności na Discordzie. Szczegóły znajdziesz na naszej stronie internetowej."
+    },
+    "tab-G": {
+      "title": "Wydarzenie 2024",
+      "content": "Lista znaków wywoławczych z wydarzenia 2024."
+    },
+    "tab-H": {
+      "title": "Wydarzenie 2023",
+      "content": "Lista znaków wywoławczych z wydarzenia 2023."
+    },
+    "tab-I": {
+      "title": "Wydarzenie 2022",
+      "content": "Lista znaków wywoławczych z wydarzenia 2022."
+    }
+  },
+  "discord": {
+    "heading": "Jak dołączyć do szaleństwa?",
+    "link": "https://discord.gg/fyvjGkky7W",
+    "image_src": "https://mememonth.org/join-our-discord.png",
+    "image_alt": "Dołącz do naszego serwera Discord"
+  },
+  "certificate": {
+    "info_before": "Certyfikaty za Miesiąc Doceniania Memów 2025 nie są jeszcze dostępne. Wydarzenie rozpocznie się 15 czerwca 2025. Proszę wrócić później!",
+    "info_after": "Certyfikaty za Miesiąc Doceniania Memów 2025 są teraz dostępne!",
+    "button_text": "Pobierz certyfikat",
+    "button_url": "https://hamawardz.app/logcheck/meme-appreciation-award-2025"
+  }
+}

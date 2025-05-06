@@ -34,14 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
     tabs.forEach(tab => {
         tab.addEventListener('click', function () {
             // Deselect all tabs
-            tabs.forEach(t => {
-                t.setAttribute('aria-selected', 'false');
-            });
+            tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
 
             // Hide all tab panels
-            tabPanels.forEach(panel => {
-                panel.hidden = true;
-            });
+            tabPanels.forEach(panel => (panel.hidden = true));
 
             // Select the clicked tab
             this.setAttribute('aria-selected', 'true');
@@ -49,8 +45,118 @@ document.addEventListener('DOMContentLoaded', function () {
             // Show the corresponding tab panel
             const targetPanel = document.getElementById(this.getAttribute('aria-controls'));
             targetPanel.hidden = false;
+
+            // Fetch data for TAB-B when it is clicked
+            if (this.getAttribute('aria-controls') === 'tab-B') {
+                fetchCallsignData();
+            }
         });
     });
+
+    // Optionally, activate the first tab by default
+    if (tabs.length > 0) {
+        tabs[0].click();
+    }
+
+    // Function to fetch data from the API and populate the table in TAB-B
+    function fetchCallsignData() {
+        const tableContainer = document.querySelector('#callsignTable').parentElement;
+
+        // Clear only the dynamic content (tables), not the static text
+        const existingTables = tableContainer.querySelectorAll('table, h4');
+        existingTables.forEach(element => element.remove());
+
+        // Fetch texts.json for localized messages
+        fetch('texts.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(texts => {
+                const noDataMessage = texts.tabs['tab-B'].no_data_message;
+
+                // Define regions to fetch data from
+                const regions = [1, 2, 3];
+
+                regions.forEach(region => {
+                    // Add a heading for the region
+                    const regionHeading = document.createElement('h4');
+                    regionHeading.textContent = `IARU Region ${region}`;
+                    tableContainer.appendChild(regionHeading);
+
+                    // Create a table for the region
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    `;
+                    tableContainer.appendChild(table);
+
+                    const tbody = table.querySelector('tbody');
+
+                    fetch(`https://mememonth.org/api.php?year=2025&region=${region}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.length === 0) {
+                                // If no data is returned, add a message row
+                                const emptyRow = document.createElement('tr');
+                                emptyRow.innerHTML = `<td colspan="3" style="text-align: center;">${noDataMessage}</td>`;
+                                tbody.appendChild(emptyRow);
+                            } else {
+                                // Populate the table with data
+                                data.forEach((entry, index) => {
+                                    const row = document.createElement('tr');
+                                    row.innerHTML = `
+                                        <td>• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td>
+                                        <td></td>
+                                        <td><img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}"></td>
+                                    `;
+                                    tbody.appendChild(row);
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                            tbody.innerHTML = `<tr><td colspan="3" style="text-align: center;">Error loading data</td></tr>`;
+                        });
+                });
+
+                // Add the additional content at the bottom
+                const hr = document.createElement('hr');
+                tableContainer.appendChild(hr);
+
+                const joinHeading = document.createElement('h3');
+                joinHeading.textContent = 'Jak dołączyć do szaleństwa?';
+                tableContainer.appendChild(joinHeading);
+
+                const discordLink = document.createElement('a');
+                discordLink.setAttribute('rel', 'noopener');
+                discordLink.setAttribute('target', '_blank');
+                discordLink.setAttribute('href', 'https://discord.gg/fyvjGkky7W');
+
+                const discordImage = document.createElement('img');
+                discordImage.setAttribute('class', 'hover-shadow');
+                discordImage.setAttribute('src', 'https://mememonth.org/join-our-discord.png');
+                discordImage.setAttribute('alt', 'Dołącz do naszego serwera Discord');
+                discordImage.setAttribute('style', 'max-width:200px;border-radius:5px;');
+
+                discordLink.appendChild(discordImage);
+                tableContainer.appendChild(discordLink);
+            })
+            .catch(error => {
+                console.error('Error loading texts.json:', error);
+            });
+    }
 
     // Language switching logic
     langButtons.forEach(button => {
@@ -73,11 +179,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
-
-    // Optionally, activate the first tab by default
-    if (tabs.length > 0) {
-        tabs[0].click();
-    }
 
     const loadingScreen = document.getElementById('loading-screen');
     setTimeout(() => {
@@ -127,5 +228,295 @@ document.addEventListener('DOMContentLoaded', function () {
         easterEggWindow.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.5)';
         easterEggWindow.style.borderRadius = '8px';
         easterEggWindow.style.textAlign = 'center';
+    });
+
+    fetch('translations.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(translations => {
+            // Populate text content
+            document.getElementById('title').textContent = translations.title;
+            document.getElementById('loading_screen_top').textContent = translations.loading_screen_top;
+            document.getElementById('loading_screen_mid').innerHTML = translations.loading_screen_mid;
+            document.getElementById('loading_screen_bottom').textContent = translations.loading_screen_bottom;
+
+            document.getElementById('tab_about').textContent = translations.tab_about;
+            document.getElementById('tab_who').textContent = translations.tab_who;
+            document.getElementById('tab_when').textContent = translations.tab_when;
+            document.getElementById('tab_where').textContent = translations.tab_where;
+            document.getElementById('tab_why').textContent = translations.tab_why;
+            document.getElementById('tab_qsl').textContent = translations.tab_qsl;
+            document.getElementById('tab_2024').textContent = translations.tab_2024;
+            document.getElementById('tab_2023').textContent = translations.tab_2023;
+            document.getElementById('tab_2022').textContent = translations.tab_2022;
+            document.getElementById('tab_legal').textContent = translations.tab_legal;
+
+            document.getElementById('about_heading').textContent = translations.about_heading;
+            document.getElementById('about_paragraph_1').textContent = translations.about_paragraph_1;
+            document.getElementById('about_paragraph_2').textContent = translations.about_paragraph_2;
+            document.getElementById('certificate-info').textContent = translations.certificate_info;
+            document.getElementById('certificate-button').textContent = translations.certificate_button;
+        })
+        .catch(error => {
+            console.error('Error loading translations:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate tab-A content
+            const tabATitle = document.getElementById('tab-A-title');
+            const tabASections = document.getElementById('tab-A-sections');
+
+            const tabAData = texts.tabs['tab-A'];
+            tabATitle.textContent = tabAData.title;
+
+            // Generate subsections
+            tabAData.subsections.forEach(subsection => {
+                const section = document.createElement('div');
+                section.innerHTML = `<h4>${subsection.subtitle}</h4>`;
+
+                // Check if content is an array or a string
+                if (Array.isArray(subsection.content)) {
+                    subsection.content.forEach(line => {
+                        const paragraph = document.createElement('p');
+                        paragraph.textContent = line;
+                        section.appendChild(paragraph);
+                    });
+                } else {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = subsection.content;
+                    section.appendChild(paragraph);
+                }
+
+                tabASections.appendChild(section);
+            });
+
+            // Similarly, populate other tabs if needed
+        })
+        .catch(error => {
+            console.error('Error loading texts:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            const certificateInfo = document.getElementById('certificate-info');
+            const certificateButton = document.getElementById('certificate-button');
+
+            const eventStartDate = new Date('2025-06-15');
+            const today = new Date();
+
+            if (today >= eventStartDate) {
+                // After the event start date
+                certificateInfo.textContent = texts.certificate.info_after;
+                certificateButton.textContent = texts.certificate.button_text;
+                certificateButton.style.display = 'inline-block';
+                certificateButton.onclick = () => {
+                    window.location.href = texts.certificate.button_url;
+                };
+            } else {
+                // Before the event start date
+                certificateInfo.textContent = texts.certificate.info_before;
+                certificateButton.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading texts:', error);
+        });
+
+    function loadTabBContent() {
+        // Fetch the JSON file
+        fetch('texts.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Get the content for Tab-B
+                const tabBContent = data.tabs['tab-B'];
+
+                // Update the title
+                const tabBTitle = document.getElementById('tab-B-title');
+                tabBTitle.textContent = tabBContent.title;
+
+                // Update the paragraph content
+                const tabBParagraph = document.querySelector('#tab-B p');
+                tabBParagraph.textContent = tabBContent.content[0];
+
+                // Optionally, you can dynamically add more content if needed
+            })
+            .catch(error => {
+                console.error('Error loading Tab-B content:', error);
+            });
+    }
+
+    // Call this function when Tab-B is activated
+    document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContent);
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-C
+            const tabCTitle = document.getElementById('tab-C-title');
+            const tabCContent = document.getElementById('tab-C-content');
+            tabCTitle.textContent = texts.tabs['tab-C'].title;
+            tabCContent.textContent = texts.tabs['tab-C'].content;
+
+            // Populate Tab-D
+            const tabDTitle = document.getElementById('tab-D-title');
+            const tabDContent = document.getElementById('tab-D-content');
+            tabDTitle.textContent = texts.tabs['tab-D'].title;
+            tabDContent.textContent = texts.tabs['tab-D'].content;
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-E
+            const tabETitle = document.getElementById('tab-E-title');
+            const tabEContent = document.getElementById('tab-E-content');
+            tabETitle.textContent = texts.tabs['tab-E'].title;
+            tabEContent.textContent = texts.tabs['tab-E'].content;
+
+            // Populate Tab-F
+            const tabFTitle = document.getElementById('tab-F-title');
+            const tabFContent = document.getElementById('tab-F-content');
+            tabFTitle.textContent = texts.tabs['tab-F'].title;
+            tabFContent.textContent = texts.tabs['tab-F'].content;
+
+            // Populate Tab-G
+            const tabGTitle = document.getElementById('tab-G-title');
+            const tabGContent = document.getElementById('tab-G-content');
+            tabGTitle.textContent = texts.tabs['tab-G'].title;
+            tabGContent.textContent = texts.tabs['tab-G'].content;
+            // Populate Tab-H
+            const tabHTitle = document.getElementById('tab-H-title');
+            const tabHContent = document.getElementById('tab-H-content');
+            tabHTitle.textContent = texts.tabs['tab-H'].title;
+            tabHContent.textContent = texts.tabs['tab-H'].content;
+            
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    function fetchTabDataForYear(tabId, year) {
+        const tableContainer = document.querySelector(`#${tabId}-table`).parentElement;
+
+        // Clear only the dynamic content (tables), not the static text
+        const existingTables = tableContainer.querySelectorAll('table, h4');
+        existingTables.forEach(element => element.remove());
+
+        // Fetch texts.json for localized messages
+        fetch('texts.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(texts => {
+                const noDataMessage = texts.tabs[tabId]?.no_data_message || "Brak danych";
+
+                // Define regions to fetch data from
+                const regions = [1, 2, 3];
+
+                regions.forEach(region => {
+                    // Add a heading for the region
+                    const regionHeading = document.createElement('h4');
+                    regionHeading.textContent = `IARU Region ${region}`;
+                    tableContainer.appendChild(regionHeading);
+
+                    // Create a table for the region
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    `;
+                    tableContainer.appendChild(table);
+
+                    const tbody = table.querySelector('tbody');
+
+                    fetch(`https://mememonth.org/api.php?year=${year}&region=${region}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.length === 0) {
+                                // If no data is returned, add a message row
+                                const emptyRow = document.createElement('tr');
+                                emptyRow.innerHTML = `<td colspan="4" style="text-align: center;">${noDataMessage}</td>`;
+                                tbody.appendChild(emptyRow);
+                            } else {
+                                // Populate the table with data
+                                data.forEach((entry, index) => {
+                                    const row = document.createElement('tr');
+                                    row.innerHTML = `
+                                        <td><a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td>
+                                        <td><img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}"></td>
+                                    `;
+                                    tbody.appendChild(row);
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">Error loading data</td></tr>`;
+                        });
+                });
+            })
+            .catch(error => {
+                console.error('Error loading texts.json:', error);
+            });
+    }
+
+    // Add event listeners for Tabs G, H, and I
+    document.querySelector('[aria-controls="tab-G"]').addEventListener('click', () => {
+        fetchTabDataForYear('tab-G', 2024);
+    });
+
+    document.querySelector('[aria-controls="tab-H"]').addEventListener('click', () => {
+        fetchTabDataForYear('tab-H', 2023);
+    });
+
+    document.querySelector('[aria-controls="tab-I"]').addEventListener('click', () => {
+        fetchTabDataForYear('tab-I', 2022);
     });
 });
