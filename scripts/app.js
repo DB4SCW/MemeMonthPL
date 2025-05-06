@@ -282,33 +282,44 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabASections = document.getElementById('tab-A-sections');
 
             const tabAData = texts.tabs['tab-A'];
-            tabATitle.textContent = tabAData.title;
+
+            // Set the title, ensuring it exists
+            tabATitle.textContent = tabAData.title || 'Default Title';
+
+            // Clear existing content
+            tabASections.innerHTML = '';
 
             // Generate subsections
-            tabAData.subsections.forEach(subsection => {
-                const section = document.createElement('div');
-                section.innerHTML = `<h4>${subsection.subtitle}</h4>`;
+            if (Array.isArray(tabAData.subsections)) {
+                tabAData.subsections.forEach(subsection => {
+                    const section = document.createElement('div');
 
-                // Check if content is an array or a string
-                if (Array.isArray(subsection.content)) {
-                    subsection.content.forEach(line => {
+                    // Add subtitle if it exists
+                    if (subsection.subtitle) {
+                        const subtitle = document.createElement('h4');
+                        subtitle.textContent = subsection.subtitle;
+                        section.appendChild(subtitle);
+                    }
+
+                    // Add content if it exists
+                    if (Array.isArray(subsection.content)) {
+                        subsection.content.forEach(line => {
+                            const paragraph = document.createElement('p');
+                            paragraph.textContent = line || ''; // Avoid undefined
+                            section.appendChild(paragraph);
+                        });
+                    } else if (subsection.content) {
                         const paragraph = document.createElement('p');
-                        paragraph.textContent = line;
+                        paragraph.textContent = subsection.content || ''; // Avoid undefined
                         section.appendChild(paragraph);
-                    });
-                } else {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = subsection.content;
-                    section.appendChild(paragraph);
-                }
+                    }
 
-                tabASections.appendChild(section);
-            });
-
-            // Similarly, populate other tabs if needed
+                    tabASections.appendChild(section);
+                });
+            }
         })
         .catch(error => {
-            console.error('Error loading texts:', error);
+            console.error('Error loading texts.json:', error);
         });
 
     fetch('texts.json')
@@ -440,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading texts.json:', error);
         });
 
+    // Modify the fetchTabDataForYear function to group two entries per row
     function fetchTabDataForYear(tabId, year) {
         const tableContainer = document.querySelector(`#${tabId}-table`).parentElement;
 
@@ -495,15 +507,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                 emptyRow.innerHTML = `<td colspan="4" style="text-align: center;">${noDataMessage}</td>`;
                                 tbody.appendChild(emptyRow);
                             } else {
-                                // Populate the table with data
-                                data.forEach((entry, index) => {
+                                // Populate the table with data, two entries per row
+                                for (let i = 0; i < data.length; i += 2) {
                                     const row = document.createElement('tr');
+                                    const entry1 = data[i];
+                                    const entry2 = data[i + 1];
+
                                     row.innerHTML = `
-                                        <td>• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td><td></td>
-                                        <td><img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}"></td>
+                                        <td>${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}</td>
+                                        <td>${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}">` : ''}</td>
+                                        <td>${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}</td>
+                                        <td>${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}">` : ''}</td>
                                     `;
                                     tbody.appendChild(row);
-                                });
+                                }
                             }
                         })
                         .catch(error => {
@@ -639,6 +656,197 @@ document.addEventListener('DOMContentLoaded', function () {
                 const randomCpuUsage = Math.floor(Math.random() * 100) + 1; // Random value between 1 and 100
                 cpuUsageElement.textContent = `${texts.status_bar.cpu_usage}${randomCpuUsage}%`;
             }, 2000); // Update every 2 seconds
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-D
+            const tabDTitle = document.getElementById('tab-D-title');
+            const tabDContent = document.getElementById('tab-D-content');
+
+            const tabDData = texts.tabs['tab-D'];
+            tabDTitle.textContent = tabDData.title;
+
+            // Add main content
+            tabDContent.innerHTML = ''; // Clear existing content
+            if (Array.isArray(tabDData.content)) {
+                tabDData.content.forEach(line => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = line;
+                    tabDContent.appendChild(paragraph);
+                });
+            } else {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = tabDData.content;
+                tabDContent.appendChild(paragraph);
+            }
+
+            // Add content2 if it exists
+            if (Array.isArray(tabDData.content2)) {
+                const subtitle = document.createElement('h4');
+                subtitle.textContent = tabDData.subtitle || 'Additional Information';
+                tabDContent.appendChild(subtitle);
+
+                tabDData.content2.forEach(line => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = line;
+                    tabDContent.appendChild(paragraph);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-H (Wydarzenie 2023)
+            const tabHTitle = document.getElementById('tab-H-title');
+            const tabHContent = document.getElementById('tab-H-content');
+
+            const tabHData = texts.tabs['tab-H'];
+            tabHTitle.textContent = tabHData.title || 'Default Title'; // Fallback if title is missing
+            tabHContent.textContent = tabHData.content || 'Brak danych'; // Fallback if content is missing
+
+            // Populate Tab-I (Wydarzenie 2022)
+            const tabITitle = document.getElementById('tab-I-title');
+            const tabIContent = document.getElementById('tab-I-content');
+
+            const tabIData = texts.tabs['tab-I'];
+            tabITitle.textContent = tabIData.title || 'Default Title'; // Fallback if title is missing
+            tabIContent.textContent = tabIData.content || 'Brak danych'; // Fallback if content is missing
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-I (Wydarzenie 2022)
+            const tabITitle = document.getElementById('tab-I-title');
+            const tabIData = texts.tabs['tab-I'];
+
+            // Set the title
+            tabITitle.textContent = tabIData.title || 'Brak tytułu'; // Fallback if title is missing
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-G (2024)
+            const tabGTitle = document.getElementById('tab-G-title');
+            const tabGContent = document.getElementById('tab-G-content');
+
+            const tabGData = texts.tabs['tab-G'];
+            tabGTitle.textContent = tabGData.title || 'Default Title'; // Fallback if title is missing
+
+            // Create and append the table first
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Callsign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>VC4FUN</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>VC4LOL</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>VC4MEME</td>
+                    </tr>
+                </tbody>
+            `;
+            tabGContent.appendChild(table);
+
+            // Add Award Check for 2024 after the table
+            const awardCheck2024Heading = document.createElement('h3');
+            awardCheck2024Heading.textContent = 'Award check:';
+            tabGContent.appendChild(awardCheck2024Heading);
+
+            const awardCheck2024Link = document.createElement('a');
+            awardCheck2024Link.href = 'https://hamawardz.app/logcheck/meme-appreciation-award-2024';
+            awardCheck2024Link.innerHTML = '<button>Awardcheck (2024)</button>';
+            tabGContent.appendChild(awardCheck2024Link);
+
+            // Populate Tab-H (2023)
+            const tabHTitle = document.getElementById('tab-H-title');
+            const tabHContent = document.getElementById('tab-H-content');
+
+            const tabHData = texts.tabs['tab-H'];
+            tabHTitle.textContent = tabHData.title || 'Default Title'; // Fallback if title is missing
+
+            // Create and append the table first
+            const tableH = document.createElement('table');
+            tableH.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Callsign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>VC3YEET</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>VC3CAT</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>VC3WOW</td>
+                    </tr>
+                </tbody>
+            `;
+            tabHContent.appendChild(tableH);
+
+            // Add Award Check for 2023 after the table
+            const awardCheck2023Heading = document.createElement('h3');
+            awardCheck2023Heading.textContent = 'Award check:';
+            tabHContent.appendChild(awardCheck2023Heading);
+
+            const awardCheck2023Link = document.createElement('a');
+            awardCheck2023Link.href = 'https://hamawardz.app/logcheck/meme-appreciation-award-2023';
+            awardCheck2023Link.innerHTML = '<button>Awardcheck (2023)</button>';
+            tabHContent.appendChild(awardCheck2023Link);
         })
         .catch(error => {
             console.error('Error loading texts.json:', error);

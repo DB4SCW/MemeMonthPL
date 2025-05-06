@@ -4,7 +4,6 @@
       "title": "Czym jest \"Miesiąc Doceniania Memów\"?",
       "subsections": [
         {
-          "subtitle": "Historia",
           "content": [
             "Archiwa mówią, że rozpoczęło się to w Kanadzie jako pomysł Bena (VA4BEN), aby szerzyć radość i dobry humor wśród radioamatorów na falach radiowych.",
             "W rzeczywistości jest to sposób dla młodych radioamatorów na zabawę, używanie fajnych znaków wywoławczych i wspólne uczestnictwo w ciekawej aktywności.",
@@ -45,11 +44,22 @@
     },
     "tab-D": {
       "title": "Co i gdzie operujemy?",
-      "content": "Najprawdopodobniej będziemy operować głównie na FT8..."
+      "content": [
+        "Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).",
+        "Ponadto planowane są operacje SSB, a także inne tryby cyfrowe. OLIVIA, JS8, może Hellschreiber? Kto wie.",
+        "Jeśli jesteś łowcą POTA, miej oczy szeroko otwarte na niektóre aktywacje POTA."
+      ],
+      "subtitle": "Jakie pasma?",
+      "content": [
+        "Prawdopodobne operacje obejmą całe pasmo HF (160m-10m), a także 2m, 70cm i pracę na satelicie QO-100 (dla tych w zasięgu)."
+      ]
     },
     "tab-E": {
       "title": "Dlaczego to robimy?",
-      "content": "Chcemy szerzyć radość i dobry humor wśród radioamatorów na całym świecie. To także świetna okazja, aby przyciągnąć młodych ludzi do krótkofalarstwa."
+      "content": [
+        "Nudy, brak pomysłów, za duzo czasu (^:  ",
+        "Chcemy szerzyć radość i dobry humor wśród radioamatorów na całym świecie. To także świetna okazja, aby przyciągnąć młodych ludzi do krótkofalarstwa."
+      ]
     },
     "tab-F": {
         "title": "QSL? QSL! Jak zdobyć jedną z tych epickich kart QSL z memami?",
@@ -68,17 +78,17 @@
         ]
       },
     "tab-G": {
-      "title": "Wydarzenie 2024",
+      "title": "Miesiąc Doceniania Memów 4: W poszukiwaniu trzeciej edycji",
       "content": "Lista znaków wywoławczych z wydarzenia 2024.",
       "no_data_message": "Brak danych dla wydarzenia 2024."
     },
     "tab-H": {
-      "title": "Wydarzenie 2023",
+      "title": "Miesiąc Doceniania Memów 2: Elektryczne Boogaloo",
       "content": "Lista znaków wywoławczych z wydarzenia 2023.",
       "no_data_message": "Brak danych dla wydarzenia 2023."
     },
     "tab-I": {
-      "title": "Wydarzenie 2022",
+      "title": "Miesiąc Doceniania Memów",
       "content": "Lista znaków wywoławczych z wydarzenia 2022.",
       "no_data_message": "Brak danych dla wydarzenia 2022."
     },
