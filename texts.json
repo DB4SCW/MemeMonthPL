@@ -52,20 +52,52 @@
       "content": "Chcemy szerzyć radość i dobry humor wśród radioamatorów na całym świecie. To także świetna okazja, aby przyciągnąć młodych ludzi do krótkofalarstwa."
     },
     "tab-F": {
-      "title": "Jak mogę wziąć udział?",
-      "content": "Możesz wziąć udział, rejestrując swój znak wywoławczy i dołączając do naszej społeczności na Discordzie. Szczegóły znajdziesz na naszej stronie internetowej."
-    },
+        "title": "QSL? QSL! Jak zdobyć jedną z tych epickich kart QSL z memami?",
+        "subsections": [
+          {
+            "subtitle": "Jak zdobyć jedną z tych epickich kart QSL z memami?",
+            "content": [
+              "Zasady QSL różnią się w zależności od operatora. Proszę sprawdzić strony QRZ każdego znaku wywoławczego."
+            ]
+          },
+          {
+            "subtitle": "Przykłady wcześniejszych kart QSL:",
+            "content": [
+            ]
+          }
+        ]
+      },
     "tab-G": {
       "title": "Wydarzenie 2024",
-      "content": "Lista znaków wywoławczych z wydarzenia 2024."
+      "content": "Lista znaków wywoławczych z wydarzenia 2024.",
+      "no_data_message": "Brak danych dla wydarzenia 2024."
     },
     "tab-H": {
       "title": "Wydarzenie 2023",
-      "content": "Lista znaków wywoławczych z wydarzenia 2023."
+      "content": "Lista znaków wywoławczych z wydarzenia 2023.",
+      "no_data_message": "Brak danych dla wydarzenia 2023."
     },
     "tab-I": {
       "title": "Wydarzenie 2022",
-      "content": "Lista znaków wywoławczych z wydarzenia 2022."
+      "content": "Lista znaków wywoławczych z wydarzenia 2022.",
+      "no_data_message": "Brak danych dla wydarzenia 2022."
+    },
+    "tab-J": {
+      "title": "Informacje prawne",
+      "subsections": [
+        {
+          "subtitle": "Impressum",
+          "content": [
+            "<a href='https://legal.wolf.taipei/impressum.html'>Kliknij tutaj, aby zobaczyć Impressum</a>"
+          ]
+        },
+        {
+          "subtitle": "Deklaracja prywatności",
+          "content": [
+            "<a href='https://legal.wolf.taipei/privacy.html'>Kliknij tutaj, aby zobaczyć Deklarację prywatności</a> <span class='fi fi-de'></span> <span class='fi fi-gb'></span>"
+          ]
+        }
+      ]
     }
   },
   "discord": {

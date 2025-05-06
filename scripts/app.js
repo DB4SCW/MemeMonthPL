@@ -424,6 +424,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabHContent = document.getElementById('tab-H-content');
             tabHTitle.textContent = texts.tabs['tab-H'].title;
             tabHContent.textContent = texts.tabs['tab-H'].content;
+            // Populate Tab-I
+            const tabITitle = document.getElementById('tab-I-title');
+            const tabIContent = document.getElementById('tab-I-content');
+            tabITitle.textContent = texts.tabs['tab-I'].title;
+            tabIContent.textContent = texts.tabs['tab-I'].content;
+
             
         })
         .catch(error => {
@@ -489,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 data.forEach((entry, index) => {
                                     const row = document.createElement('tr');
                                     row.innerHTML = `
-                                        <td><a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td>
+                                        <td>• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td><td></td>
                                         <td><img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}"></td>
                                     `;
                                     tbody.appendChild(row);
@@ -519,4 +525,94 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('[aria-controls="tab-I"]').addEventListener('click', () => {
         fetchTabDataForYear('tab-I', 2022);
     });
+
+    function loadTabFContent() {
+        fetch('texts.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(texts => {
+                const tabFData = texts.tabs['tab-F'];
+                const tabFTitle = document.getElementById('tab-F-title');
+                const tabFContent = document.getElementById('tab-F-content');
+
+                // Set the title
+                tabFTitle.textContent = tabFData.title;
+
+                // Populate the subsections
+                tabFContent.innerHTML = ''; // Clear existing content
+                tabFData.subsections.forEach(subsection => {
+                    const section = document.createElement('div');
+                    section.innerHTML = `<h4>${subsection.subtitle}</h4>`;
+
+                    // Add content
+                    subsection.content.forEach(line => {
+                        const paragraph = document.createElement('p');
+                        paragraph.textContent = line;
+                        section.appendChild(paragraph);
+                    });
+
+                    tabFContent.appendChild(section);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading Tab-F content:', error);
+            });
+    }
+
+    // Add event listener for Tab-F
+    document.querySelector('[aria-controls="tab-F"]').addEventListener('click', loadTabFContent);
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-J
+            const tabJTitle = document.getElementById('tab-J-title');
+            const tabJContent = document.getElementById('tab-J-content');
+            tabJTitle.textContent = texts.tabs['tab-J'].title;
+            tabJContent.textContent = texts.tabs['tab-J'].content;
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Populate Tab-J
+            const tabJTitle = document.getElementById('tab-J-title');
+            const tabJContent = document.getElementById('tab-J-content');
+            const tabJData = texts.tabs['tab-J'];
+
+            // Set the title
+            tabJTitle.textContent = tabJData.title;
+
+            // Populate subsections
+            tabJData.subsections.forEach(subsection => {
+                const section = document.createElement('div');
+                section.innerHTML = `<h4>${subsection.subtitle}</h4>`;
+                subsection.content.forEach(line => {
+                    const paragraph = document.createElement('p');
+                    paragraph.innerHTML = line; // Use innerHTML to allow links and spans
+                    section.appendChild(paragraph);
+                });
+                tabJContent.appendChild(section);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
 });
