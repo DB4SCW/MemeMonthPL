@@ -845,4 +845,31 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error loading texts.json:', error);
         });
+
+    function updateEventProgress() {
+        const progressBar = document.getElementById('eventProgress');
+
+        // Daty rozpoczęcia i zakończenia wydarzenia
+        const startDate = new Date('2025-06-15T00:00:00').getTime();
+        const endDate = new Date('2025-08-15T23:59:59').getTime();
+        const currentDate = new Date().getTime();
+
+        // Oblicz całkowity czas trwania wydarzenia i czas, który już minął
+        const totalDuration = endDate - startDate;
+        const elapsedTime = currentDate - startDate;
+
+        // Oblicz procentowy postęp
+        let progress = (elapsedTime / totalDuration) * 100;
+
+        // Upewnij się, że wartość mieści się w zakresie 0-100
+        if (progress < 0) progress = 0;
+        if (progress > 100) progress = 100;
+
+        // Ustaw wartość paska postępu
+        progressBar.value = progress;
+    }
+
+    // Wywołaj funkcję po załadowaniu strony i ustaw interwał, aby aktualizować pasek co minutę
+    updateEventProgress();
+    setInterval(updateEventProgress, 60000); // Aktualizacja co 60 sekund
 });

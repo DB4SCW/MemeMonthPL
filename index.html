@@ -68,16 +68,55 @@
           <a href="https://www.db4scw.de/meme-appreciation-month/"><button>Deutsch/German</button></a>
           <a href="https://mememonth.org/"><button>Deutsch/German</button></a>
         </section>
-    </article>
-    
 
+        <p id="progress-info"></p>
+        <progress id="progress-bar" max="100" style="display: none; width: 100%; top: 0; left: 0; height: 10px;"></progress>
+        <script>
+    const startDate = new Date('2025-06-15T00:00:00').getTime();
+    const endDate = new Date('2025-08-15T23:59:59').getTime();
+
+    const progressBar = document.getElementById('progress-bar');
+    const progressInfo = document.getElementById('progress-info');
+
+    function updateProgress() {
+        const currentDate = new Date().getTime();
+
+        if (currentDate < startDate) {
+            // Before the event start date
+            progressBar.style.display = 'block';
+            progressBar.value = 0;
+            progressInfo.textContent = 'Postęp wydarzenia: 0.00000%';
+        } else if (currentDate >= startDate && currentDate <= endDate) {
+            // During the event
+            progressBar.style.display = 'block';
+            const totalDuration = endDate - startDate;
+            const elapsedTime = currentDate - startDate;
+            const progress = (elapsedTime / totalDuration) * 100;
+
+            progressBar.value = progress;
+            progressInfo.textContent = `Postęp wydarzenia: ${progress.toFixed(5)}%`;
+        } else {
+            // After the event end date
+            progressBar.style.display = 'block';
+            progressBar.value = 100;
+            progressInfo.textContent = 'Postęp wydarzenia: 100.00000%';
+        }
+    }
+
+    // Initial update
+    updateProgress();
+
+    // Update progress every second
+    setInterval(updateProgress, 1000);
+</script>
+    
+</article>
     <!-- Tab B -->
     <article role="tabpanel" hidden id="tab-B">
       <h3 id="tab-B-title" data-translate="tab-b-title"></h3>
         <table id="callsignTable">
             <thead>
                 <tr>
-
                 </tr>
             </thead>
             <tbody></tbody>
