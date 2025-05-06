@@ -110,16 +110,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (data.length === 0) {
                                 // If no data is returned, add a message row
                                 const emptyRow = document.createElement('tr');
-                                emptyRow.innerHTML = `<td colspan="3" style="text-align: center;">${noDataMessage}</td>`;
+                                emptyRow.innerHTML = `<td colspan="2" style="text-align: center;">${noDataMessage}</td>`;
                                 tbody.appendChild(emptyRow);
                             } else {
-                                // Populate the table with data
-                                data.forEach((entry, index) => {
+                                // Populate the table with data, one entry per row
+                                data.forEach(entry => {
                                     const row = document.createElement('tr');
                                     row.innerHTML = `
-                                        <td>• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a></td>
-                                        <td></td>
-                                        <td><img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}"></td>
+                                        <td style="text-align: center;">
+                                            ${entry ? `• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a>` : ''}
+
+                                            ${entry ? `<img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}" style="margin-left: 10px;">` : ''}
+                                        </td>
                                     `;
                                     tbody.appendChild(row);
                                 });
@@ -127,31 +129,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                         .catch(error => {
                             console.error('Error fetching data:', error);
-                            tbody.innerHTML = `<tr><td colspan="3" style="text-align: center;">Error loading data</td></tr>`;
+                            tbody.innerHTML = `<tr><td colspan="2" style="text-align: center;">Error loading data</td></tr>`;
                         });
                 });
-
-                // Add the additional content at the bottom
-                const hr = document.createElement('hr');
-                tableContainer.appendChild(hr);
-
-                const joinHeading = document.createElement('h3');
-                joinHeading.textContent = 'Jak dołączyć do szaleństwa?';
-                tableContainer.appendChild(joinHeading);
-
-                const discordLink = document.createElement('a');
-                discordLink.setAttribute('rel', 'noopener');
-                discordLink.setAttribute('target', '_blank');
-                discordLink.setAttribute('href', 'https://discord.gg/fyvjGkky7W');
-
-                const discordImage = document.createElement('img');
-                discordImage.setAttribute('class', 'hover-shadow');
-                discordImage.setAttribute('src', 'https://mememonth.org/join-our-discord.png');
-                discordImage.setAttribute('alt', 'Dołącz do naszego serwera Discord');
-                discordImage.setAttribute('style', 'max-width:200px;border-radius:5px;');
-
-                discordLink.appendChild(discordImage);
-                tableContainer.appendChild(discordLink);
             })
             .catch(error => {
                 console.error('Error loading texts.json:', error);
@@ -484,7 +464,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     table.innerHTML = `
                         <thead>
                             <tr>
-
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -504,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (data.length === 0) {
                                 // If no data is returned, add a message row
                                 const emptyRow = document.createElement('tr');
-                                emptyRow.innerHTML = `<td colspan="4" style="text-align: center;">${noDataMessage}</td>`;
+                                emptyRow.innerHTML = `<td colspan="2" style="text-align: center;">${noDataMessage}</td>`;
                                 tbody.appendChild(emptyRow);
                             } else {
                                 // Populate the table with data, two entries per row
@@ -513,19 +492,34 @@ document.addEventListener('DOMContentLoaded', function () {
                                     const entry1 = data[i];
                                     const entry2 = data[i + 1];
 
-                                    row.innerHTML = `
-                                        <td>${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}</td>
-                                        <td>${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}">` : ''}</td>
-                                        <td>${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}</td>
-                                        <td>${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}">` : ''}</td>
-                                    `;
+                                    if (entry2) {
+                                        // If there are two entries, create a normal row
+                                        row.innerHTML = `
+                                            <td style="text-align: center;">
+                                                ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                                ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
+                                            </td>
+                                            <td style="text-align: center;">
+                                                ${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}
+                                                ${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}" style="margin-left: 10px;">` : ''}
+                                            </td>
+                                        `;
+                                    } else {
+                                        // If there is only one entry, span it across all columns
+                                        row.innerHTML = `
+                                            <td colspan="2" style="text-align: center;">
+                                                ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                                ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
+                                            </td>
+                                        `;
+                                    }
                                     tbody.appendChild(row);
                                 }
                             }
                         })
                         .catch(error => {
                             console.error('Error fetching data:', error);
-                            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">Error loading data</td></tr>`;
+                            tbody.innerHTML = `<tr><td colspan="2" style="text-align: center;">Error loading data</td></tr>`;
                         });
                 });
             })

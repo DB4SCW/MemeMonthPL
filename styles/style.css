@@ -160,3 +160,38 @@ button {
     border: none;
     cursor: pointer;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+td {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+table tbody tr td:nth-child(odd) {
+    padding-right: 5px; /* Odstęp między callsignami */
+}
+
+#callsignTable {
+    margin: 0 auto; /* Wyśrodkuj tabelę */
+    width: auto;
+}
+
+#callsignTable td {
+    padding-left: 5px; /* Zmniejsz odstęp z lewej */
+    padding-right: 5px; /* Zmniejsz odstęp z prawej */
+}
