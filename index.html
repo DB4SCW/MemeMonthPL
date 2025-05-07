@@ -37,20 +37,21 @@
               </div>
 
     <div class="window-body">
-        <section class="tabs" style="width: flex;">
+        <section class="tbutton" style="width: flex;">
             <menu role="tablist" aria-label="Zakładki okna">
-              <button role="tab" aria-selected="true" aria-controls="tab-A">O nas</button>
-              <button role="tab" aria-controls="tab-B">Kto?</button>
-              <button role="tab" aria-controls="tab-C">Kiedy?</button>
-              <button role="tab" aria-controls="tab-D">Gdzie i co?</button>
-              <button role="tab" aria-controls="tab-E">Dlaczego?</button>
-              <button role="tab" aria-controls="tab-F">QSL?</button>
-              <button role="tab" aria-controls="tab-G">2024</button>
-              <button role="tab" aria-controls="tab-H">2023</button>
-              <button role="tab" aria-controls="tab-I">2022</button>
-              <button role="tab" aria-controls="tab-J">Informacje prawne</button>
+                <button role="tab" aria-selected="true" aria-controls="tab-A">O nas</button>
+                <button role="tab" aria-controls="tab-B">Kto?</button>
+                <button role="tab" aria-controls="tab-C">Kiedy?</button>
+                <button role="tab" aria-controls="tab-D">Gdzie i co?</button>
+                <button role="tab" aria-controls="tab-E">Dlaczego?</button>
+                <button role="tab" aria-controls="tab-F">QSL?</button>
+                <button role="tab" aria-controls="tab-G">2024</button>
+                <button role="tab" aria-controls="tab-H">2023</button>
+                <button role="tab" aria-controls="tab-I">2022</button>
+                <button role="tab" aria-controls="tab-J">Info</button>
             </menu>
         </section>
+
 
         <div id="tab1" class="tab-content active">
     <!-- Tab A -->
@@ -114,6 +115,7 @@
     <!-- Tab B -->
     <article role="tabpanel" hidden id="tab-B">
       <h3 id="tab-B-title" data-translate="tab-b-title"></h3>
+      <div id="tab-B-content"></div>
         <table id="callsignTable">
             <thead>
                 <tr>
@@ -196,12 +198,22 @@
           <h3 id="tab-J-title"></h3>
           <div id="tab-J-content"></div>
       </article>
-    <!-- Dodaj pozostałe zakładki tutaj -->
-</div>
 
+
+    <!-- Dodaj pozostałe zakładki tutaj -->
+    <article role="tabpanel" hidden id="tab-OWO">
+        <h3 id="tab-OWO-title"></h3>
+        <p id="tab-OWO-content"></p>
+    </article>
+
+
+
+
+</div>
+    <div>
         <section class="field-row" style="justify-content: flex-end">
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><button>OK</button></a>
-        <button role="tab" aria-controls="tab-A">Anuluj</button>
+        <button role="tab" aria-controls="tab-OWO" onclick="document.getElementById('tab-OWO').hidden = false;">Anuluj</button>
         </section>
     </div>
 
