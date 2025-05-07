@@ -44,14 +44,21 @@
     },
     "tab-D": {
       "title": "Co i gdzie operujemy?",
-      "content": [
-        "Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).",
-        "Ponadto planowane są operacje SSB, a także inne tryby cyfrowe. OLIVIA, JS8, może Hellschreiber? Kto wie.",
-        "Jeśli jesteś łowcą POTA, miej oczy szeroko otwarte na niektóre aktywacje POTA."
-      ],
-      "subtitle": "Jakie pasma?",
-      "content": [
-        "Prawdopodobne operacje obejmą całe pasmo HF (160m-10m), a także 2m, 70cm i pracę na satelicie QO-100 (dla tych w zasięgu)."
+      "sections": [
+        {
+          "subtitle": "Tryby operacji",
+          "content": [
+            "Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).",
+            "Ponadto planowane są operacje SSB, a także inne tryby cyfrowe. OLIVIA, JS8, może Hellschreiber? Kto wie.",
+            "Jeśli jesteś łowcą POTA, miej oczy szeroko otwarte na niektóre aktywacje POTA."
+          ]
+        },
+        {
+          "subtitle": "Jakie pasma?",
+          "content": [
+            "Prawdopodobne operacje obejmą całe pasmo HF (160m-10m), a także 2m, 70cm i pracę na satelicie QO-100 (dla tych w zasięgu)."
+          ]
+        }
       ]
     },
     "tab-E": {

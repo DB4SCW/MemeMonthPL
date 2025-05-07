@@ -348,7 +348,27 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabDTitle = document.getElementById('tab-D-title');
             const tabDContent = document.getElementById('tab-D-content');
             tabDTitle.textContent = texts.tabs['tab-D'].title;
-            tabDContent.textContent = texts.tabs['tab-D'].content;
+
+            // Clear existing content
+            tabDContent.innerHTML = '';
+
+            // Iterate through sections and render them
+            const tabDData = texts.tabs['tab-D'];
+            tabDData.sections.forEach(section => {
+                // Add subtitle if it exists
+                if (section.subtitle) {
+                    const subtitle = document.createElement('h4');
+                    subtitle.textContent = section.subtitle;
+                    tabDContent.appendChild(subtitle);
+                }
+
+                // Add content paragraphs
+                section.content.forEach(line => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = line;
+                    tabDContent.appendChild(paragraph);
+                });
+            });
         })
         .catch(error => {
             console.error('Error loading texts.json:', error);
@@ -635,32 +655,25 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabDData = texts.tabs['tab-D'];
             tabDTitle.textContent = tabDData.title;
 
-            // Add main content
-            tabDContent.innerHTML = ''; // Clear existing content
-            if (Array.isArray(tabDData.content)) {
-                tabDData.content.forEach(line => {
+            // Clear existing content
+            tabDContent.innerHTML = '';
+
+            // Iterate through sections and render them
+            tabDData.sections.forEach(section => {
+                // Add subtitle if it exists
+                if (section.subtitle) {
+                    const subtitle = document.createElement('h4');
+                    subtitle.textContent = section.subtitle;
+                    tabDContent.appendChild(subtitle);
+                }
+
+                // Add content paragraphs
+                section.content.forEach(line => {
                     const paragraph = document.createElement('p');
                     paragraph.textContent = line;
                     tabDContent.appendChild(paragraph);
                 });
-            } else {
-                const paragraph = document.createElement('p');
-                paragraph.textContent = tabDData.content;
-                tabDContent.appendChild(paragraph);
-            }
-
-            // Add content2 if it exists
-            if (Array.isArray(tabDData.content2)) {
-                const subtitle = document.createElement('h4');
-                subtitle.textContent = tabDData.subtitle || 'Additional Information';
-                tabDContent.appendChild(subtitle);
-
-                tabDData.content2.forEach(line => {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = line;
-                    tabDContent.appendChild(paragraph);
-                });
-            }
+            });
         })
         .catch(error => {
             console.error('Error loading texts.json:', error);
