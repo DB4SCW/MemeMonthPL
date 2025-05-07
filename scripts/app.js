@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown
-        countdownElement.textContent = `Start za: ${days} dni, ${hours}:${minutes}:${seconds} `;
         countdownElement.textContent = `Start za: ${days} dni,`;
     }, 1000);
 
@@ -214,40 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
         easterEggWindow.style.textAlign = 'center';
     });
 
-    fetch('translations.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(translations => {
-            // Populate text content
-            document.getElementById('title').textContent = translations.title;
-            document.getElementById('loading_screen_top').textContent = translations.loading_screen_top;
-            document.getElementById('loading_screen_mid').innerHTML = translations.loading_screen_mid;
-            document.getElementById('loading_screen_bottom').textContent = translations.loading_screen_bottom;
-
-            document.getElementById('tab_about').textContent = translations.tab_about;
-            document.getElementById('tab_who').textContent = translations.tab_who;
-            document.getElementById('tab_when').textContent = translations.tab_when;
-            document.getElementById('tab_where').textContent = translations.tab_where;
-            document.getElementById('tab_why').textContent = translations.tab_why;
-            document.getElementById('tab_qsl').textContent = translations.tab_qsl;
-            document.getElementById('tab_2024').textContent = translations.tab_2024;
-            document.getElementById('tab_2023').textContent = translations.tab_2023;
-            document.getElementById('tab_2022').textContent = translations.tab_2022;
-            document.getElementById('tab_legal').textContent = translations.tab_legal;
-
-            document.getElementById('about_heading').textContent = translations.about_heading;
-            document.getElementById('about_paragraph_1').textContent = translations.about_paragraph_1;
-            document.getElementById('about_paragraph_2').textContent = translations.about_paragraph_2;
-            document.getElementById('certificate-info').textContent = translations.certificate_info;
-            document.getElementById('certificate-button').textContent = translations.certificate_button;
-        })
-        .catch(error => {
-            console.error('Error loading translations:', error);
-        });
 
     fetch('texts.json')
         .then(response => {
@@ -809,26 +774,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Create and append the table first
             const tableH = document.createElement('table');
             tableH.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Callsign</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>VC3YEET</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>VC3CAT</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>VC3WOW</td>
-                    </tr>
-                </tbody>
+
             `;
             tabHContent.appendChild(tableH);
 
