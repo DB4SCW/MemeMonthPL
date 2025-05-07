@@ -100,18 +100,19 @@
       "no_data_message": "Brak danych dla wydarzenia 2022."
     },
     "tab-J": {
-      "title": "Informacje prawne",
+      "title": "Informacje o stronie",
       "subsections": [
         {
-          "subtitle": "replace me replace me replace me ",
+          "subtitle": "Dlaczego powstała ta strona?",
           "content": [
-            "replace me replace me replace me"
+            "Strona powstała jako tłumaczenie oryginalnej strony akcji dyplomowej, przy okazji jako mały projekt gdzie większość tekstów jest przechowana w osobnym pliku.",
+            "Oraz oczywiście powstała ona podczas motywacji autystycznej :D,"
           ]
         },
         {
-          "subtitle": "replace me replace me replace me ",
+          "subtitle": "Jakie dane są przechowywane? ",
           "content": [
-            "replace me replace me replace me"
+            "Strona nie przechowuje żadnych danych w plikach cookies oraz na serwerze, ciastka mamy tylko do jedzenia ;3."
           ]
         },
         {
