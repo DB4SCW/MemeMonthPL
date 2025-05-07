@@ -143,9 +143,9 @@
     "image_alt": "Dołącz do naszego serwera Discord"
   },
   "certificate": {
-    "info_before": "Certyfikaty za Miesiąc Doceniania Memów 2025 nie są jeszcze dostępne. Wydarzenie rozpocznie się 15 czerwca 2025. Proszę wrócić później!",
-    "info_after": "Certyfikaty za Miesiąc Doceniania Memów 2025 są teraz dostępne!",
-    "button_text": "Pobierz certyfikat",
+    "info_before": "Dyplomy za Miesiąc Doceniania Memów 2025 nie są jeszcze dostępne. Wydarzenie rozpocznie się 15 czerwca 2025. Proszę wrócić później!",
+    "info_after": "Dyplomy za Miesiąc Doceniania Memów 2025 są teraz dostępne!",
+    "button_text": "Pobierz dyplom",
     "button_url": "https://hamawardz.app/logcheck/meme-appreciation-award-2025"
   },
   "status_bar": {
