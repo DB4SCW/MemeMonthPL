@@ -1,5 +1,9 @@
 {
   "tabs": {
+    "tab-OWO": {
+  "title": "Co to jest OWO?",
+  "content": "OWO to popularny emotikon używany w internecie, który wyraża zdziwienie lub zachwyt.!"
+},
     "tab-A": {
       "title": "Czym jest \"Miesiąc Doceniania Memów\"?",
       "subsections": [
@@ -22,10 +26,10 @@
           ]
         },
         {
-          "subtitle": "Certyfikat Doceniania Memów 2025",
+          "subtitle": "Dyplom Doceniania Memów 2025",
           "content": [
-            "Tym razem, za swoje łączności z wszystkimi znakami wywoławczymi związanymi z memami, możesz zdobyć fantastyczne certyfikaty!",
-            "Możesz sprawdzić, czy się kwalifikujesz i pobrać swój certyfikat na tej stronie:"
+            "Tym razem, za swoje łączności z wszystkimi znakami wywoławczymi związanymi z memami, możesz zdobyć fantastyczne dyplomy!",
+            "Możesz sprawdzić, czy się kwalifikujesz i pobrać swój dyplom na tej stronie:"
           ]
         }
       ]
@@ -64,26 +68,25 @@
     "tab-E": {
       "title": "Dlaczego to robimy?",
       "content": [
-        "Nudy, brak pomysłów, za duzo czasu (^:  ",
+        "Nudy, brak pomysłów, za dużo czasu (^: ",
         "Chcemy szerzyć radość i dobry humor wśród radioamatorów na całym świecie. To także świetna okazja, aby przyciągnąć młodych ludzi do krótkofalarstwa."
       ]
     },
     "tab-F": {
-        "title": "QSL? QSL! Jak zdobyć jedną z tych epickich kart QSL z memami?",
-        "subsections": [
-          {
-            "subtitle": "Jak zdobyć jedną z tych epickich kart QSL z memami?",
-            "content": [
-              "Zasady QSL różnią się w zależności od operatora. Proszę sprawdzić strony QRZ każdego znaku wywoławczego."
-            ]
-          },
-          {
-            "subtitle": "Przykłady wcześniejszych kart QSL:",
-            "content": [
-            ]
-          }
-        ]
-      },
+      "title": "QSL? QSL! Jak zdobyć jedną z tych epickich kart QSL z memami?",
+      "subsections": [
+        {
+          "subtitle": "Jak zdobyć jedną z tych epickich kart QSL z memami?",
+          "content": [
+            "Zasady QSL różnią się w zależności od operatora. Proszę sprawdzić strony QRZ każdego znaku wywoławczego."
+          ]
+        },
+        {
+          "subtitle": "Przykłady wcześniejszych kart QSL:",
+          "content": []
+        }
+      ]
+    },
     "tab-G": {
       "title": "Miesiąc Doceniania Memów 4: W poszukiwaniu trzeciej edycji",
       "content": "Lista znaków wywoławczych z wydarzenia 2024. Trwało od 15 czerwca 2024 do 15 sierpnia 2024.",
@@ -110,7 +113,7 @@
           ]
         },
         {
-          "subtitle": "Jakie dane są przechowywane? ",
+          "subtitle": "Jakie dane są przechowywane?",
           "content": [
             "Strona nie przechowuje żadnych danych w plikach cookies oraz na serwerze, ciastka mamy tylko do jedzenia ;3."
           ]
@@ -121,18 +124,15 @@
             "Przepisanie strony oraz tłumaczenie PL: <a href='https://github.com/YamishoYami' style='text-decoration: underline;'>YamishoFen SP0FEN</a>",
             "Wsparcie techniczne: <a href='https://github.com/riomoo' style='text-decoration: underline;'>riomoo</a>",
             "Wsparcie tłumaczenia PL: <a href='https://github.com/1GoldenNugget1' style='text-decoration: underline;'>Kasp S02NIC</a>"
-
-
           ]
         },
         {
           "subtitle": "",
           "content": [
-                      "Oryginalna strona: <a href='https://mememonth.org/' style='text-decoration: underline;'>mememonth.org</a>"
-
-
+            "Oryginalna strona: <a href='https://mememonth.org/' style='text-decoration: underline;'>mememonth.org</a>",
+            "Autor API oraz głównej strony akcji: <a href='https://github.com/DB4SCW' style='text-decoration: underline;'>Stefan DB4SCW</a>"
           ]
-          }
+        }
       ]
     }
   },
@@ -155,3 +155,5 @@
     "cpu_usage": "Użycie CPU: "
   }
 }
+
+

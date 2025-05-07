@@ -137,27 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Language switching logic
-    langButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const selectedLang = this.getAttribute('data-lang');
-
-            // Update active button
-            langButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            // Update content based on selected language
-            Object.keys(translations[selectedLang]).forEach(tabId => {
-                const tabContent = document.getElementById(tabId);
-                if (tabContent) {
-                    tabContent.querySelector('h3, h2').textContent =
-                        translations[selectedLang][tabId].title;
-                    tabContent.querySelector('p').textContent =
-                        translations[selectedLang][tabId].content;
-                }
-            });
-        });
-    });
 
     const loadingScreen = document.getElementById('loading-screen');
     setTimeout(() => {
@@ -300,7 +279,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     function loadTabBContent() {
-        // Fetch the JSON file
         fetch('texts.json')
             .then(response => {
                 if (!response.ok) {
@@ -308,26 +286,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return response.json();
             })
-            .then(data => {
-                // Get the content for Tab-B
-                const tabBContent = data.tabs['tab-B'];
-
-                // Update the title
+            .then(texts => {
+                const tabBData = texts.tabs['tab-B'];
                 const tabBTitle = document.getElementById('tab-B-title');
-                tabBTitle.textContent = tabBContent.title;
+                const tabBContent = document.getElementById('tab-B-content');
 
-                // Update the paragraph content
-                const tabBParagraph = document.querySelector('#tab-B p');
-                tabBParagraph.textContent = tabBContent.content[0];
+                // Set the title
+                tabBTitle.textContent = tabBData.title;
 
-                // Optionally, you can dynamically add more content if needed
+                // Populate the content
+                tabBContent.innerHTML = ''; // Clear existing content
+                tabBData.content.forEach(line => {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = line;
+                    tabBContent.appendChild(paragraph);
+                });
             })
             .catch(error => {
                 console.error('Error loading Tab-B content:', error);
             });
     }
 
-    // Call this function when Tab-B is activated
+    // Add event listener for Tab-B
     document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContent);
 
     fetch('texts.json')
@@ -566,23 +546,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener for Tab-F
     document.querySelector('[aria-controls="tab-F"]').addEventListener('click', loadTabFContent);
 
-    fetch('texts.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            // Populate Tab-J
-            const tabJTitle = document.getElementById('tab-J-title');
-            const tabJContent = document.getElementById('tab-J-content');
-            tabJTitle.textContent = texts.tabs['tab-J'].title;
-            tabJContent.textContent = texts.tabs['tab-J'].content;
-        })
-        .catch(error => {
-            console.error('Error loading texts.json:', error);
-        });
 
     fetch('texts.json')
         .then(response => {
@@ -679,52 +642,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading texts.json:', error);
         });
 
-    fetch('texts.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            // Populate Tab-H (Wydarzenie 2023)
-            const tabHTitle = document.getElementById('tab-H-title');
-            const tabHContent = document.getElementById('tab-H-content');
-
-            const tabHData = texts.tabs['tab-H'];
-            tabHTitle.textContent = tabHData.title || 'Default Title'; // Fallback if title is missing
-            tabHContent.textContent = tabHData.content || 'Brak danych'; // Fallback if content is missing
-
-            // Populate Tab-I (Wydarzenie 2022)
-            const tabITitle = document.getElementById('tab-I-title');
-            const tabIContent = document.getElementById('tab-I-content');
-
-            const tabIData = texts.tabs['tab-I'];
-            tabITitle.textContent = tabIData.title || 'Default Title'; // Fallback if title is missing
-            tabIContent.textContent = tabIData.content || 'Brak danych'; // Fallback if content is missing
-        })
-        .catch(error => {
-            console.error('Error loading texts.json:', error);
-        });
-
-    fetch('texts.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            // Populate Tab-I (Wydarzenie 2022)
-            const tabITitle = document.getElementById('tab-I-title');
-            const tabIData = texts.tabs['tab-I'];
-
-            // Set the title
-            tabITitle.textContent = tabIData.title || 'Brak tytułu'; // Fallback if title is missing
-        })
-        .catch(error => {
-            console.error('Error loading texts.json:', error);
-        });
 
     fetch('texts.json')
         .then(response => {
@@ -828,7 +745,32 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.value = progress;
     }
 
+// Dodaj obsługę dla tab-OWO
+document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', () => {
+    fetch('texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            const tabOWOTitle = document.getElementById('tab-OWO-title');
+            const tabOWOContent = document.getElementById('tab-OWO-content');
+
+            // Ustaw tytuł i treść
+            tabOWOTitle.textContent = texts.tabs['tab-OWO'].title;
+            tabOWOContent.textContent = texts.tabs['tab-OWO'].content;
+        })
+        .catch(error => {
+            console.error('Error loading texts.json:', error);
+        });
+});
+
+
     // Wywołaj funkcję po załadowaniu strony i ustaw interwał, aby aktualizować pasek co minutę
     updateEventProgress();
     setInterval(updateEventProgress, 60000); // Aktualizacja co 60 sekund
+
+
 });
