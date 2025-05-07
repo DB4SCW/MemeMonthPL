@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const existingTables = tableContainer.querySelectorAll('table, h4');
         existingTables.forEach(element => element.remove());
 
-        // Fetch texts.json for localized messages
-        fetch('texts.json')
+        // Fetch pl-texts.json for localized messages
+        fetch('pl-texts.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => {
-                console.error('Error loading texts.json:', error);
+                console.error('Error loading pl-texts.json:', error);
             });
     }
 
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -243,10 +243,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -278,39 +278,27 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error loading texts:', error);
         });
 
-    function loadTabBContent() {
-        fetch('texts.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(texts => {
-                const tabBData = texts.tabs['tab-B'];
-                const tabBTitle = document.getElementById('tab-B-title');
-                const tabBContent = document.getElementById('tab-B-content');
+    function loadTabBContent(texts) {
+        const tabBData = texts.tabs['tab-B'];
+        const tabBTitle = document.getElementById('tab-B-title');
+        const tabBContent = document.getElementById('tab-B-content');
 
-                // Set the title
-                tabBTitle.textContent = tabBData.title;
+        // Set the title
+        tabBTitle.textContent = tabBData.title;
 
-                // Populate the content
-                tabBContent.innerHTML = ''; // Clear existing content
-                tabBData.content.forEach(line => {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = line;
-                    tabBContent.appendChild(paragraph);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading Tab-B content:', error);
-            });
+        // Populate the content
+        tabBContent.innerHTML = ''; // Clear existing content
+        tabBData.content.forEach(line => {
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = line; // Use innerHTML to render HTML content
+            tabBContent.appendChild(paragraph);
+        });
     }
 
     // Add event listener for Tab-B
     document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContent);
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -351,10 +339,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -393,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
     // Modify the fetchTabDataForYear function to group two entries per row
@@ -404,8 +392,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const existingTables = tableContainer.querySelectorAll('table, h4');
         existingTables.forEach(element => element.remove());
 
-        // Fetch texts.json for localized messages
-        fetch('texts.json')
+        // Fetch pl-texts.json for localized messages
+        fetch('pl-texts.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -489,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => {
-                console.error('Error loading texts.json:', error);
+                console.error('Error loading pl-texts.json:', error);
             });
     }
 
@@ -507,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function loadTabFContent() {
-        fetch('texts.json')
+        fetch('pl-texts.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -547,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('[aria-controls="tab-F"]').addEventListener('click', loadTabFContent);
 
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -576,10 +564,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -600,10 +588,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 2000); // Update every 2 seconds
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -639,11 +627,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
 
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -719,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tabHContent.appendChild(awardCheck2023Link);
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
         });
 
     function updateEventProgress() {
@@ -747,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Dodaj obsługę dla tab-OWO
 document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', () => {
-    fetch('texts.json')
+    fetch('pl-texts.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -763,7 +751,25 @@ document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', ()
             tabOWOContent.textContent = texts.tabs['tab-OWO'].content;
         })
         .catch(error => {
-            console.error('Error loading texts.json:', error);
+            console.error('Error loading pl-texts.json:', error);
+        });
+});
+
+
+// Call this function when Tab-B is clicked
+document.querySelector('[aria-controls="tab-B"]').addEventListener('click', function () {
+    fetch('pl-texts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            loadTabBContent(texts);
+        })
+        .catch(error => {
+            console.error('Error loading Tab-B content:', error);
         });
 });
 

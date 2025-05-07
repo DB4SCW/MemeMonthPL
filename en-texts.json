@@ -10,7 +10,7 @@
         {
           "content": [
             "Archives say it started in Canada as an idea by Ben (VA4BEN) to spread joy and good humor among amateur radio operators on the airwaves.",
-            "In reality, it is a way for young amateur radio operators to have fun, use cool callsigns, and participate in an interesting activity together.",
+            "In reality, it's a way for young amateur radio operators to have fun, use cool callsigns, and participate in an interesting activity together.",
             "It all started in 2022 with the first Meme Appreciation Month and iconic callsigns like VB4LIGMA, VB3YEET, VC9CATGIRL, VC3RIKROLL, VC3DEEZ, and many more.",
             "The second edition in 2023 brought callsigns like VC9FEMBOY, DZ2NUTS, PD33ZDOGE, and DL0NGCAT.",
             "2024 was already the fourth edition. In theory. That's the joke.",
@@ -18,10 +18,10 @@
           ]
         },
         {
-          "subtitle": "What is a meme, and why should it be appreciated?",
+          "subtitle": "What is a meme and why should it be appreciated?",
           "content": [
             "Officially, according to the dictionary, a meme is an image, video, text, etc., usually humorous in nature, that is copied and quickly spread by internet users, often with slight changes. In short - a meme is something most young people know and find funny.",
-            "In reality, it is a way for young amateur radio operators to have fun, use cool callsigns, and participate in an interesting activity together.",
+            "In reality, it's a way for young amateur radio operators to have fun, use cool callsigns, and participate in an interesting activity together.",
             "If this fun element reaches amateur radio and attracts young people - it will be perfect, right?"
           ]
         },
@@ -37,7 +37,9 @@
     "tab-B": {
       "title": "Who is participating? How many operators can there be?",
       "content": [
-        "The following callsigns have been registered for Meme Appreciation Month:"
+        "The following callsigns have been registered for Meme Appreciation Month:",
+        "Feel free to join us!",
+        "<a href='https://discord.gg/dfzk5YQYcc' target='_blank' style='text-decoration: none;'><button>Join us on Discord!</button></a>"
       ],
       "no_data_message": "No data for this region, maybe you'll join us? :D",
       "error_message": "Error loading data"
@@ -47,12 +49,11 @@
       "content": "The event will be active from June 15, 2025, to August 15, 2025."
     },
     "tab-D": {
-      "title": "What and where are we operating?",
       "sections": [
         {
-          "subtitle": "Operating Modes",
+          "subtitle": "What modes? Where?",
           "content": [
-            "We will most likely operate mainly on FT8 (to spread the fun to as many people as possible) and SSTV (to share more memes).",
+            "Most likely, we will operate mainly on FT8 (to spread the fun to as many people as possible) and SSTV (to share more memes).",
             "Additionally, SSB operations are planned, as well as other digital modes. OLIVIA, JS8, maybe Hellschreiber? Who knows.",
             "If you're a POTA hunter, keep your eyes open for some POTA activations."
           ]
@@ -60,7 +61,7 @@
         {
           "subtitle": "What bands?",
           "content": [
-            "Probable operations will include the entire HF band (160m-10m), as well as 2m, 70cm, and satellite work on QO-100 (for those within range)."
+            "Probable operations will cover the entire HF band (160m-10m), as well as 2m, 70cm, and satellite work on QO-100 (for those within range)."
           ]
         }
       ]
@@ -73,10 +74,10 @@
       ]
     },
     "tab-F": {
-      "title": "QSL? QSL! How to get one of these epic meme QSL cards?",
+      "title": "QSL? QSL! How to get one of these epic QSL cards with memes?",
       "subsections": [
         {
-          "subtitle": "How to get one of these epic meme QSL cards?",
+          "subtitle": "How to get one of these epic QSL cards with memes?",
           "content": [
             "QSL rules vary depending on the operator. Please check the QRZ pages of each callsign."
           ]
@@ -103,25 +104,25 @@
       "no_data_message": "No data for the 2022 event."
     },
     "tab-J": {
-      "title": "About the website",
+      "title": "About the site",
       "subsections": [
         {
-          "subtitle": "Why was this website created?",
+          "subtitle": "Why was this site created?",
           "content": [
-            "The website was created as a translation of the original diploma action website, and as a small project where most texts are stored in a separate file.",
-            "And of course, it was created during autistic motivation :D,"
+            "The site was created as a translation of the original award action site, and as a small project where most texts are stored in a separate file.",
+            "And of course, it was created during an autistic motivation burst :D,"
           ]
         },
         {
           "subtitle": "What data is stored?",
           "content": [
-            "The website does not store any data in cookies or on the server; cookies are only for eating ;3."
+            "The site does not store any data in cookies or on the server, cookies are only for eating ;3."
           ]
         },
         {
-          "subtitle": "Website creators",
+          "subtitle": "Site creators",
           "content": [
-            "Website rewrite and PL translation: <a href='https://github.com/YamishoYami' style='text-decoration: underline;'>YamishoFen SP0FEN</a>",
+            "Site rewrite and PL translation: <a href='https://github.com/YamishoYami' style='text-decoration: underline;'>YamishoFen SP0FEN</a>",
             "Technical support: <a href='https://github.com/riomoo' style='text-decoration: underline;'>riomoo</a>",
             "PL translation support: <a href='https://github.com/1GoldenNugget1' style='text-decoration: underline;'>Kasp S02NIC</a>"
           ]
@@ -129,8 +130,8 @@
         {
           "subtitle": "",
           "content": [
-            "Original website: <a href='https://mememonth.org/' style='text-decoration: underline;'>mememonth.org</a>",
-            "API and main website author: <a href='https://github.com/DB4SCW' style='text-decoration: underline;'>Stefan DB4SCW</a>"
+            "Original site: <a href='https://mememonth.org/' style='text-decoration: underline;'>mememonth.org</a>",
+            "API and main action site author: <a href='https://github.com/DB4SCW' style='text-decoration: underline;'>Stefan DB4SCW</a>"
           ]
         }
       ]
@@ -143,7 +144,7 @@
     "image_alt": "Join our Discord server"
   },
   "certificate": {
-    "info_before": "Certificates for Meme Appreciation Month 2025 are not yet available. The event will start on June 15, 2025. Please check back later!",
+    "info_before": "Certificates for Meme Appreciation Month 2025 are not yet available. The event starts on June 15, 2025. Please check back later!",
     "info_after": "Certificates for Meme Appreciation Month 2025 are now available!",
     "button_text": "Download certificate",
     "button_url": "https://hamawardz.app/logcheck/meme-appreciation-award-2025"

@@ -37,7 +37,9 @@
     "tab-B": {
       "title": "Kto w tym uczestniczy? Ilu operatorów może być?",
       "content": [
-        "Następujące znaki wywoławcze zostały zarejestrowane na Miesiąc Doceniania Memów:"
+        "Następujące znaki wywoławcze zostały zarejestrowane na Miesiąc Doceniania Memów:",
+        "Zapraszamy by dołączyć się do nas!",
+        "<a href='https://discord.gg/dfzk5YQYcc' target='_blank' style='text-decoration: none;'><button>Dołącz do nas na Discordzie!</button></a>"
       ],
       "no_data_message": "Brak danych dla tego regionu, może dołączysz do nas? :D",
       "error_message": "Błąd podczas ładowania danych"
@@ -46,24 +48,23 @@
       "title": "Kiedy to się dzieje?",
       "content": "Wydarzenie będzie aktywne od 15 czerwca 2025 do 15 sierpnia 2025."
     },
-    "tab-D": {
-      "title": "Co i gdzie operujemy?",
-      "sections": [
-        {
-          "subtitle": "Tryby operacji",
-          "content": [
-            "Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).",
-            "Ponadto planowane są operacje SSB, a także inne tryby cyfrowe. OLIVIA, JS8, może Hellschreiber? Kto wie.",
-            "Jeśli jesteś łowcą POTA, miej oczy szeroko otwarte na niektóre aktywacje POTA."
-          ]
-        },
-        {
-          "subtitle": "Jakie pasma?",
-          "content": [
-            "Prawdopodobne operacje obejmą całe pasmo HF (160m-10m), a także 2m, 70cm i pracę na satelicie QO-100 (dla tych w zasięgu)."
-          ]
-        }
+"tab-D": {
+  "sections": [
+    {
+      "subtitle": "Jakie tryby pracy? Gdzie?",
+      "content": [
+        "Najprawdopodobniej będziemy operować głównie na FT8 (aby propagować zabawę do jak największej liczby osób) i SSTV (aby dzielić się większą ilością memów).",
+        "Ponadto planowane są operacje SSB, a także inne tryby cyfrowe. OLIVIA, JS8, może Hellschreiber? Kto wie.",
+        "Jeśli jesteś łowcą POTA, miej oczy szeroko otwarte na niektóre aktywacje POTA."
       ]
+    },
+    {
+      "subtitle": "Jakie pasma?",
+      "content": [
+        "Prawdopodobne operacje obejmą całe pasmo HF (160m-10m), a także 2m, 70cm i pracę na satelicie QO-100 (dla tych w zasięgu)."
+      ]
+    }
+  ]
     },
     "tab-E": {
       "title": "Dlaczego to robimy?",
