@@ -1,0 +1,160 @@
+{
+  "tabs": {
+    "tab-OWO": {
+      "title": "Ano ang OWO?",
+      "content": "Ang OWO ay isang sikat na emoticon sa internet na nagpapahayag ng sorpresa o tuwa!"
+    },
+    "tab-A": {
+      "title": "Ano ang \"Buwan ng Pagpapahalaga sa Meme\"?",
+      "subsections": [
+        {
+          "content": [
+            "Sinasabi ng mga tala na nagsimula ito sa Canada bilang ideya ni Ben (VA4BEN) upang magdala ng kasiyahan at mabuting humor sa mga amateur radio operator sa himpapawid.",
+            "Sa totoo lang, ito ay isang paraan para sa mga kabataang amateur radio operator na magsaya, gumamit ng mga cool na callsign, at makilahok sa isang kawili-wiling aktibidad nang magkasama.",
+            "Nagsimula ito noong 2022 sa unang Buwan ng Pagpapahalaga sa Meme at mga iconic na callsign tulad ng VB4LIGMA, VB3YEET, VC9CATGIRL, VC3RIKROLL, VC3DEEZ, at marami pang iba.",
+            "Ang ikalawang edisyon noong 2023 ay nagdala ng mga callsign tulad ng VC9FEMBOY, DZ2NUTS, PD33ZDOGE, at DL0NGCAT.",
+            "Ang 2024 ay ang ikaapat na edisyon. Sa teorya. Iyon ang biro.",
+            "Ang 2025 ay ang ikatlong edisyon dahil natagpuan namin ito noong 2024."
+          ]
+        },
+        {
+          "subtitle": "Ano ang meme at bakit ito dapat pahalagahan?",
+          "content": [
+            "Opisyal, ayon sa diksyunaryo, ang meme ay isang imahe, video, teksto, atbp., karaniwang nakakatawa sa kalikasan, na kinokopya at mabilis na kumakalat ng mga gumagamit ng internet, madalas na may bahagyang pagbabago. Sa madaling salita - ang meme ay isang bagay na alam at nakakatawa para sa karamihan ng mga kabataan.",
+            "Sa totoo lang, ito ay isang paraan para sa mga kabataang amateur radio operator na magsaya, gumamit ng mga cool na callsign, at makilahok sa isang kawili-wiling aktibidad nang magkasama.",
+            "Kung ang elementong ito ng kasiyahan ay makarating sa amateur radio at makaakit ng mga kabataan - magiging perpekto, di ba?"
+          ]
+        },
+        {
+          "subtitle": "Gantimpala ng Pagpapahalaga sa Meme 2025",
+          "content": [
+            "Sa pagkakataong ito, para sa iyong mga kontak sa lahat ng meme-related callsigns, maaari kang makakuha ng mga kamangha-manghang gantimpala!",
+            "Maaari mong suriin kung kwalipikado ka at i-download ang iyong gantimpala sa pahinang ito:"
+          ]
+        }
+      ]
+    },
+    "tab-B": {
+      "title": "Sino ang lumalahok? Ilan ang mga operator?",
+      "content": [
+        "Ang mga sumusunod na callsign ay nakarehistro para sa Buwan ng Pagpapahalaga sa Meme:",
+        "Huwag mag-atubiling sumali sa amin!",
+        "<a href='https://discord.gg/dfzk5YQYcc' target='_blank' style='text-decoration: none;'><button>Sumali sa amin sa Discord!</button></a>"
+      ],
+      "no_data_message": "Walang data para sa rehiyong ito, baka gusto mong sumali? :D",
+      "error_message": "Error sa pag-load ng data"
+    },
+    "tab-C": {
+      "title": "Kailan ito magaganap?",
+      "content": "Ang kaganapan ay magiging aktibo mula Hunyo 15, 2025, hanggang Agosto 15, 2025."
+    },
+    "tab-D": {
+      "sections": [
+        {
+          "subtitle": "Anong mga mode? Saan?",
+          "content": [
+            "Malamang, mag-ooperate kami pangunahin sa FT8 (upang maikalat ang kasiyahan sa mas maraming tao) at SSTV (upang magbahagi ng higit pang mga meme).",
+            "Bukod dito, nakaplano ang mga operasyon ng SSB, pati na rin ang iba pang digital modes. OLIVIA, JS8, baka Hellschreiber? Sino ang nakakaalam.",
+            "Kung ikaw ay isang POTA hunter, bantayan ang ilang POTA activations."
+          ]
+        },
+        {
+          "subtitle": "Anong mga banda?",
+          "content": [
+            "Ang mga posibleng operasyon ay sasaklaw sa buong HF band (160m-10m), pati na rin ang 2m, 70cm, at satellite work sa QO-100 (para sa mga nasa saklaw)."
+          ]
+        }
+      ]
+    },
+    "tab-E": {
+      "title": "Bakit namin ito ginagawa?",
+      "content": [
+        "Boredom, kakulangan ng mga ideya, sobrang oras (^: ",
+        "Gusto naming magdala ng kasiyahan at mabuting humor sa mga amateur radio operator sa buong mundo. Isa rin itong magandang pagkakataon upang makaakit ng mga kabataan sa amateur radio."
+      ]
+    },
+    "tab-F": {
+      "title": "QSL? QSL! Paano makakuha ng isa sa mga epic QSL cards na may memes?",
+      "subsections": [
+        {
+          "subtitle": "Paano makakuha ng isa sa mga epic QSL cards na may memes?",
+          "content": [
+            "Ang mga patakaran ng QSL ay nag-iiba depende sa operator. Mangyaring suriin ang mga pahina ng QRZ ng bawat callsign."
+          ]
+        },
+        {
+          "subtitle": "Mga halimbawa ng mga nakaraang QSL cards:",
+          "content": []
+        }
+      ]
+    },
+    "tab-G": {
+      "title": "Buwan ng Pagpapahalaga sa Meme 4: Sa paghahanap ng ikatlong edisyon",
+      "content": "Listahan ng mga callsign mula sa kaganapan noong 2024. Tumagal ito mula Hunyo 15, 2024, hanggang Agosto 15, 2024.",
+      "no_data_message": "Walang data para sa kaganapan noong 2024."
+    },
+    "tab-H": {
+      "title": "Buwan ng Pagpapahalaga sa Meme 2: Electric Boogaloo",
+      "content": "Listahan ng mga callsign mula sa kaganapan noong 2023. Tumagal ito mula Hunyo 15, 2023, hanggang Agosto 15, 2023.",
+      "no_data_message": "Walang data para sa kaganapan noong 2023."
+    },
+    "tab-I": {
+      "title": "Buwan ng Pagpapahalaga sa Meme",
+      "content": "Listahan ng mga callsign mula sa kaganapan noong 2022. Tumagal ito mula Hunyo 15, 2022, hanggang Agosto 15, 2022.",
+      "no_data_message": "Walang data para sa kaganapan noong 2022."
+    },
+    "tab-J": {
+      "title": "Tungkol sa site",
+      "subsections": [
+        {
+          "subtitle": "Bakit nilikha ang site na ito?",
+          "content": [
+            "Ang site ay nilikha bilang isang pagsasalin ng orihinal na site ng award action, at bilang isang maliit na proyekto kung saan ang karamihan ng mga teksto ay nakaimbak sa isang hiwalay na file.",
+            "At siyempre, nilikha ito sa panahon ng isang autistic motivation burst :D,"
+          ]
+        },
+        {
+          "subtitle": "Anong data ang nakaimbak?",
+          "content": [
+            "Ang site ay hindi nag-iimbak ng anumang data sa cookies o sa server, cookies ay para lang sa pagkain ;3."
+          ]
+        },
+        {
+          "subtitle": "Mga tagalikha ng site",
+          "content": [
+            "Pag-rewrite ng site at pagsasalin sa PL: <a href='https://github.com/YamishoYami' style='text-decoration: underline;'>YamishoFen SP0FEN</a>",
+            "Suporta sa teknikal: <a href='https://github.com/riomoo' style='text-decoration: underline;'>riomoo</a>",
+            "Suporta sa pagsasalin sa PL: <a href='https://github.com/1GoldenNugget1' style='text-decoration: underline;'>Kasp S02NIC</a>"
+          ]
+        },
+        {
+          "subtitle": "",
+          "content": [
+            "Orihinal na site: <a href='https://mememonth.org/' style='text-decoration: underline;'>mememonth.org</a>",
+            "May-akda ng API at pangunahing site ng aksyon: <a href='https://github.com/DB4SCW' style='text-decoration: underline;'>Stefan DB4SCW</a>"
+          ]
+        }
+      ]
+    }
+  },
+  "discord": {
+    "heading": "Paano sumali sa kasiyahan?",
+    "link": "https://discord.gg/fyvjGkky7W",
+    "image_src": "https://mememonth.org/join-our-discord.png",
+    "image_alt": "Sumali sa aming Discord server"
+  },
+  "certificate": {
+    "info_before": "Ang mga sertipiko para sa Buwan ng Pagpapahalaga sa Meme 2025 ay hindi pa magagamit. Ang kaganapan ay magsisimula sa Hunyo 15, 2025. Mangyaring bumalik mamaya!",
+    "info_after": "Ang mga sertipiko para sa Buwan ng Pagpapahalaga sa Meme 2025 ay magagamit na!",
+    "button_text": "I-download ang sertipiko",
+    "button_url": "https://hamawardz.app/logcheck/meme-appreciation-award-2025"
+  },
+  "status_bar": {
+    "version": "Bersyon 1.0.0",
+    "ptt_message": "Pindutin ang PTT para sa higit pang kasiyahan.",
+    "transmission_message": "Ipinapadala ang lahat ng iyong sensitibong password sa 27.025 MHz USB.....21.37% tapos na",
+    "cpu_usage": "Paggamit ng CPU: "
+  }
+}
+
+

@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const countdownElement = document.getElementById('countdown-timer');
     const closeButton = document.getElementById('close-button');
 
+    // Determine the JSON file to load based on the current HTML file
+    const currentFile = window.location.pathname.split('/').pop(); // Get the current file name
+
+    // Add support for tl.html to load tl-texts.json
+    let textsFile;
+    if (currentFile === 'en.html') {
+        textsFile = 'en-texts.json';
+    } else if (currentFile === 'tl.html') {
+        textsFile = 'tl-texts.json';
+    } else {
+        textsFile = 'pl-texts.json'; // Default to Polish
+    }
+
     // Set the target date and time (e.g., June 15, 2025, 00:00:00)
     const targetDate = new Date('2025-06-15T00:00:00').getTime();
 
@@ -15,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (timeLeft <= 0) {
             clearInterval(interval);
-            countdownElement.textContent = 'Wydarzenie już się rozpoczęło!';
+            countdownElement.textContent = '00 : 00 : 00!';
             return;
         }
 
@@ -26,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown
-        countdownElement.textContent = `Start za: ${days} dni,`;
+        countdownElement.textContent = `${String(days).padStart(2, '0')} : ${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
+
     }, 1000);
 
     // Tab switching logic
@@ -65,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const existingTables = tableContainer.querySelectorAll('table, h4');
         existingTables.forEach(element => element.remove());
 
-        // Fetch pl-texts.json for localized messages
-        fetch('pl-texts.json')
+        // Fetch the appropriate JSON file for localized messages
+        fetch(textsFile)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,10 +147,54 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => {
-                console.error('Error loading pl-texts.json:', error);
+                console.error(`Error loading ${textsFile}:`, error);
             });
     }
 
+    // Fetch the appropriate JSON file for other content
+    fetch(textsFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            console.log(`Loaded texts from ${textsFile}:`, texts);
+            // Use the loaded texts to populate the page
+            // Example: Populate Tab-A content
+            const tabATitle = document.getElementById('tab-A-title');
+            const tabASections = document.getElementById('tab-A-sections');
+            const tabAData = texts.tabs['tab-A'];
+
+            tabATitle.textContent = tabAData.title || 'Default Title';
+            tabASections.innerHTML = ''; // Clear existing content
+
+            if (Array.isArray(tabAData.subsections)) {
+                tabAData.subsections.forEach(subsection => {
+                    const section = document.createElement('div');
+                    if (subsection.subtitle) {
+                        const subtitle = document.createElement('h4');
+                        subtitle.textContent = subsection.subtitle;
+                        section.appendChild(subtitle);
+                    }
+                    if (Array.isArray(subsection.content)) {
+                        subsection.content.forEach(line => {
+                            const paragraph = document.createElement('p');
+                            paragraph.textContent = line;
+                            section.appendChild(paragraph);
+                        });
+                    }
+                    tabASections.appendChild(section);
+                });
+            }
+        })
+        .catch(error => {
+            console.error(`Error loading ${textsFile}:`, error);
+        });
+
+    // Update other fetch calls to use textsFile
+    // Replace all instances of 'pl-texts.json' with textsFile in the rest of the code
 
     const loadingScreen = document.getElementById('loading-screen');
     setTimeout(() => {
@@ -192,8 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
         easterEggWindow.style.textAlign = 'center';
     });
 
-
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -201,52 +258,40 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(texts => {
-            // Populate tab-A content
+            console.log(`Loaded texts from ${textsFile}:`, texts);
+            // Use the loaded texts to populate the page
+            // Example: Populate Tab-A content
             const tabATitle = document.getElementById('tab-A-title');
             const tabASections = document.getElementById('tab-A-sections');
-
             const tabAData = texts.tabs['tab-A'];
 
-            // Set the title, ensuring it exists
             tabATitle.textContent = tabAData.title || 'Default Title';
+            tabASections.innerHTML = ''; // Clear existing content
 
-            // Clear existing content
-            tabASections.innerHTML = '';
-
-            // Generate subsections
             if (Array.isArray(tabAData.subsections)) {
                 tabAData.subsections.forEach(subsection => {
                     const section = document.createElement('div');
-
-                    // Add subtitle if it exists
                     if (subsection.subtitle) {
                         const subtitle = document.createElement('h4');
                         subtitle.textContent = subsection.subtitle;
                         section.appendChild(subtitle);
                     }
-
-                    // Add content if it exists
                     if (Array.isArray(subsection.content)) {
                         subsection.content.forEach(line => {
                             const paragraph = document.createElement('p');
-                            paragraph.textContent = line || ''; // Avoid undefined
+                            paragraph.textContent = line;
                             section.appendChild(paragraph);
                         });
-                    } else if (subsection.content) {
-                        const paragraph = document.createElement('p');
-                        paragraph.textContent = subsection.content || ''; // Avoid undefined
-                        section.appendChild(paragraph);
                     }
-
                     tabASections.appendChild(section);
                 });
             }
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -298,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener for Tab-B
     document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContent);
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -339,10 +384,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error('Error loading texts:', error);
         });
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -381,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error('Error loading texts:', error);
         });
 
     // Modify the fetchTabDataForYear function to group two entries per row
@@ -392,8 +437,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const existingTables = tableContainer.querySelectorAll('table, h4');
         existingTables.forEach(element => element.remove());
 
-        // Fetch pl-texts.json for localized messages
-        fetch('pl-texts.json')
+        // Fetch the appropriate JSON file for localized messages
+        fetch(textsFile)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -477,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => {
-                console.error('Error loading pl-texts.json:', error);
+                console.error(`Error loading ${textsFile}:`, error);
             });
     }
 
@@ -495,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function loadTabFContent() {
-        fetch('pl-texts.json')
+        fetch(textsFile)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -535,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('[aria-controls="tab-F"]').addEventListener('click', loadTabFContent);
 
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -564,10 +609,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -588,10 +633,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 2000); // Update every 2 seconds
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -627,11 +672,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 
 
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -707,7 +752,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tabHContent.appendChild(awardCheck2023Link);
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 
     function updateEventProgress() {
@@ -733,9 +778,12 @@ document.addEventListener('DOMContentLoaded', function () {
         progressBar.value = progress;
     }
 
+
+    
+
 // Dodaj obsługę dla tab-OWO
 document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', () => {
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -751,14 +799,14 @@ document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', ()
             tabOWOContent.textContent = texts.tabs['tab-OWO'].content;
         })
         .catch(error => {
-            console.error('Error loading pl-texts.json:', error);
+            console.error(`Error loading ${textsFile}:`, error);
         });
 });
 
 
 // Call this function when Tab-B is clicked
 document.querySelector('[aria-controls="tab-B"]').addEventListener('click', function () {
-    fetch('pl-texts.json')
+    fetch(textsFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -779,4 +827,175 @@ document.querySelector('[aria-controls="tab-B"]').addEventListener('click', func
     setInterval(updateEventProgress, 60000); // Aktualizacja co 60 sekund
 
 
+});
+
+// Function to update the event progress bar
+function updateEventProgressBar() {
+    const progressBar = document.getElementById('eventProgress');
+    const progressInfo = document.getElementById('progress-info');
+
+    // Event start and end dates
+    const startDate = new Date('2025-06-15T00:00:00').getTime();
+    const endDate = new Date('2025-08-15T23:59:59').getTime();
+    const currentDate = new Date().getTime();
+
+    // Calculate total duration and elapsed time
+    const totalDuration = endDate - startDate;
+    const elapsedTime = currentDate - startDate;
+
+    // Calculate progress percentage
+    let progress = (elapsedTime / totalDuration) * 100;
+
+    // Ensure progress is within the range of 0-100
+    if (progress < 0) progress = 0;
+    if (progress > 100) progress = 100;
+
+    // Update the progress bar and info text
+    progressBar.value = progress;
+
+    if (progress === 0) {
+        progressInfo.textContent = 'Event progress: 0.00000%';
+    } else if (progress === 100) {
+        progressInfo.textContent = 'Event progress: 100.00000%';
+    } else {
+        progressInfo.textContent = `Event progress: ${progress.toFixed(5)}%`;
+    }
+}
+
+// Function to handle Tab-OWO content
+function loadTabOWOContent() {
+    fetch(textsFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            const tabOWOTitle = document.getElementById('tab-OWO-title');
+            const tabOWOContent = document.getElementById('tab-OWO-content');
+
+            // Set title and content
+            tabOWOTitle.textContent = texts.tabs['tab-OWO'].title;
+            tabOWOContent.textContent = texts.tabs['tab-OWO'].content;
+        })
+        .catch(error => {
+            console.error(`Error loading ${textsFile}:`, error);
+        });
+}
+
+// Function to handle Tab-B content
+function loadTabBContentWithFetch() {
+    fetch(textsFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            const tabBData = texts.tabs['tab-B'];
+            const tabBTitle = document.getElementById('tab-B-title');
+            const tabBContent = document.getElementById('tab-B-content');
+
+            // Set the title
+            tabBTitle.textContent = tabBData.title;
+
+            // Populate the content
+            tabBContent.innerHTML = ''; // Clear existing content
+            tabBData.content.forEach(line => {
+                const paragraph = document.createElement('p');
+                paragraph.innerHTML = line; // Use innerHTML to render HTML content
+                tabBContent.appendChild(paragraph);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading Tab-B content:', error);
+        });
+}
+
+// Add event listener for Tab-OWO
+document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', loadTabOWOContent);
+
+// Add event listener for Tab-B
+document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContentWithFetch);
+
+// Call the progress bar update function after the page loads and set an interval to update it every minute
+updateEventProgressBar();
+setInterval(updateEventProgressBar, 60000); // Update every 60 seconds
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const progressBar = document.getElementById('progress-bar');
+    const progressInfo = document.getElementById('progress-info');
+
+    // Determine the JSON file to load based on the current HTML file
+    const currentFile = window.location.pathname.split('/').pop(); // Get the current file name
+    let textsFile;
+
+    if (currentFile === 'en.html') {
+        textsFile = 'en-texts.json';
+    } else if (currentFile === 'tl.html') {
+        textsFile = 'tl-texts.json';
+    } else {
+        textsFile = 'pl-texts.json'; // Default to Polish
+    }
+
+    console.log(`Loading texts from: ${textsFile}`); // Debugging
+
+    // Fetch language-specific texts
+    fetch(textsFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(texts => {
+            // Use the loaded texts for the progress bar
+            const progressTexts = texts.progress || {
+                before: 'Event progress: 0.00000%',
+                during: 'Event progress: {progress}%',
+                after: 'Event progress: 100.00000%'
+            };
+
+            // Set the target date and time (e.g., June 15, 2025, 00:00:00)
+            const startDate = new Date('2025-06-15T00:00:00').getTime();
+            const endDate = new Date('2025-08-15T23:59:59').getTime();
+
+            // Function to update the progress bar
+            function updateProgress() {
+                const currentDate = new Date().getTime();
+
+                if (currentDate < startDate) {
+                    // Before the event start date
+                    progressBar.style.display = 'block';
+                    progressBar.value = 0;
+                    progressInfo.textContent = progressTexts.before;
+                } else if (currentDate >= startDate && currentDate <= endDate) {
+                    // During the event
+                    progressBar.style.display = 'block';
+                    const totalDuration = endDate - startDate;
+                    const elapsedTime = currentDate - startDate;
+                    const progress = (elapsedTime / totalDuration) * 100;
+
+                    progressBar.value = progress;
+                    progressInfo.textContent = progressTexts.during.replace('{progress}', progress.toFixed(5));
+                } else {
+                    // After the event end date
+                    progressBar.style.display = 'block';
+                    progressBar.value = 100;
+                    progressInfo.textContent = progressTexts.after;
+                }
+            }
+
+            // Initial update
+            updateProgress();
+
+            // Update progress every second
+            setInterval(updateProgress, 1000);
+        })
+        .catch(error => {
+            console.error(`Error loading texts from ${textsFile}:`, error);
+        });
 });

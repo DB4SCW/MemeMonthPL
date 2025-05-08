@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"="width=device-width, initial-scale=1.0">
-    <title>Miesiąc Memów 3 : Odnalezione!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Appreciation Month 3: Found!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/xp.css">    
     <link rel="stylesheet" href="styles/style.css">
@@ -28,7 +28,7 @@
         <nav>
             
             <div class="title-bar">
-                <div class="title-bar-text">Miesiąc Doceniania Memów 3: Chuck Norris odnalazł trzeci!</div>
+                <div class="title-bar-text">Meme Appreciation Month 3: Chuck Norris found the third!</div>
                 <div class="title-bar-controls">
                   <button aria-label="Minimize"></button>
                   <button aria-label="Maximize"></button>
@@ -40,21 +40,18 @@
 
 
         <section class="tbutton" style="width: flex;">
-            <menu role="tablist" aria-label="Zakładki okna">
-                <button role="tab" aria-selected="true" aria-controls="tab-A">O nas</button>
-                <button role="tab" aria-controls="tab-B">Kto?</button>
-                <button role="tab" aria-controls="tab-C">Kiedy?</button>
-                <button role="tab" aria-controls="tab-D">Gdzie i co?</button>
-                <button role="tab" aria-controls="tab-E">Dlaczego?</button>
+            <menu role="tablist" aria-label="Window Tabs">
+                <button role="tab" aria-selected="true" aria-controls="tab-A">About Us</button>
+                <button role="tab" aria-controls="tab-B">Who?</button>
+                <button role="tab" aria-controls="tab-C">When?</button>
+                <button role="tab" aria-controls="tab-D">Where and What?</button>
+                <button role="tab" aria-controls="tab-E">Why?</button>
                 <button role="tab" aria-controls="tab-F">QSL?</button>
                 <button role="tab" aria-controls="tab-G">2024</button>
                 <button role="tab" aria-controls="tab-H">2023</button>
                 <button role="tab" aria-controls="tab-I">2022</button>
                 <button role="tab" aria-controls="tab-J">Info</button>
-
-                
             </menu>
-            
         </section>
 
 
@@ -76,7 +73,8 @@
           <a href="https://mememonth.org/"><button>English</button></a>
         </section>
 
-        <p id="progress-info"></p>
+        
+        <p id="progress-info">Event progress: 0.00000%</p>
         <progress id="progress-bar" max="100" style="display: none; width: 100%; top: 0; left: 0; height: 10px;"></progress>
         <script>
     const startDate = new Date('2025-06-15T00:00:00').getTime();
@@ -106,9 +104,11 @@
             // After the event end date
             progressBar.style.display = 'block';
             progressBar.value = 100;
-            progressInfo.textContent = '';
+            progressInfo.textContent = '100.00000%';
         }
     }
+
+    
 
     // Initial update
     updateProgress();
@@ -117,6 +117,8 @@
     setInterval(updateProgress, 1000);
 </script>
     
+
+
 </article>
     <!-- Tab B -->
     <article role="tabpanel" hidden id="tab-B">
@@ -237,6 +239,26 @@
   
 
     <script src="scripts/app.js"></script>
+    <script>
+        // Update the script to use en-texts.json
+        const textsFile = 'en-texts.json';
+
+        fetch(textsFile)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(texts => {
+                // Use the English texts for populating the content
+                console.log('Loaded English texts:', texts);
+                // Update your DOM manipulation logic here
+            })
+            .catch(error => {
+                console.error('Error loading en-texts.json:', error);
+            });
+    </script>
 
 </body>
 </html>

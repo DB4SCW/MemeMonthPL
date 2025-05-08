@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="tl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"="width=device-width, initial-scale=1.0">
-    <title>Miesiąc Memów 3 : Odnalezione!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buwan ng Pagpapahalaga sa Meme 3: Natagpuan!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/xp.css">    
     <link rel="stylesheet" href="styles/style.css">
@@ -13,8 +13,8 @@
 <div id="loading-screen">
   <div class="logo">
     <p class="top">Meme</p>
-    <p class="mid">Appreciation<span>XD</span></p>
-    <p class="bottom">Month 2025</p>
+    <p class="mid">Pagpapahalaga<span>XD</span></p>
+    <p class="bottom">Buwan 2025</p>
   </div>
   <div class="container">
     <div class="box"></div>
@@ -28,7 +28,7 @@
         <nav>
             
             <div class="title-bar">
-                <div class="title-bar-text">Miesiąc Doceniania Memów 3: Chuck Norris odnalazł trzeci!</div>
+                <div class="title-bar-text">Buwan ng Pagpapahalaga sa Meme 3: Natagpuan ni Chuck Norris ang pangatlo!</div>
                 <div class="title-bar-controls">
                   <button aria-label="Minimize"></button>
                   <button aria-label="Maximize"></button>
@@ -40,17 +40,17 @@
 
 
         <section class="tbutton" style="width: flex;">
-            <menu role="tablist" aria-label="Zakładki okna">
-                <button role="tab" aria-selected="true" aria-controls="tab-A">O nas</button>
-                <button role="tab" aria-controls="tab-B">Kto?</button>
-                <button role="tab" aria-controls="tab-C">Kiedy?</button>
-                <button role="tab" aria-controls="tab-D">Gdzie i co?</button>
-                <button role="tab" aria-controls="tab-E">Dlaczego?</button>
+            <menu role="tablist" aria-label="Mga Tab ng Window">
+                <button role="tab" aria-selected="true" aria-controls="tab-A">Tungkol sa Amin</button>
+                <button role="tab" aria-controls="tab-B">Sino?</button>
+                <button role="tab" aria-controls="tab-C">Kailan?</button>
+                <button role="tab" aria-controls="tab-D">Saan at Ano?</button>
+                <button role="tab" aria-controls="tab-E">Bakit?</button>
                 <button role="tab" aria-controls="tab-F">QSL?</button>
                 <button role="tab" aria-controls="tab-G">2024</button>
                 <button role="tab" aria-controls="tab-H">2023</button>
                 <button role="tab" aria-controls="tab-I">2022</button>
-                <button role="tab" aria-controls="tab-J">Info</button>
+                <button role="tab" aria-controls="tab-J">Impormasyon</button>
 
                 
             </menu>
@@ -70,7 +70,7 @@
           <button id="certificate-button" style="display: none, bold;"></button>
         </div>
 
-        <h4>This info in foreign languages:</h4>
+        <h4>Impormasyon sa ibang wika:</h4>
         <section class="field-row">
           <a href="https://www.db4scw.de/meme-appreciation-month/"><button>Deutsch/German</button></a>
           <a href="https://mememonth.org/"><button>English</button></a>
@@ -106,7 +106,7 @@
             // After the event end date
             progressBar.style.display = 'block';
             progressBar.value = 100;
-            progressInfo.textContent = '';
+            progressInfo.textContent = '100.00000%';
         }
     }
 
@@ -237,6 +237,26 @@
   
 
     <script src="scripts/app.js"></script>
+    <script>
+        // Update the script to use tl-texts.json
+        const textsFile = 'tl-texts.json';
+
+        fetch(textsFile)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(texts => {
+                // Use the Tagalog texts for populating the content
+                console.log('Loaded Tagalog texts:', texts);
+                // Update your DOM manipulation logic here
+            })
+            .catch(error => {
+                console.error('Error loading tl-texts.json:', error);
+            });
+    </script>
 
 </body>
 </html>
