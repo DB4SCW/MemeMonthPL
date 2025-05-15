@@ -170,25 +170,24 @@ document.addEventListener('DOMContentLoaded', function () {
             tabATitle.textContent = tabAData.title || 'Default Title';
             tabASections.innerHTML = ''; // Clear existing content
 
-            if (Array.isArray(tabAData.subsections)) {
-                tabAData.subsections.forEach(subsection => {
-                    const section = document.createElement('div');
-                    if (subsection.subtitle) {
-                        const subtitle = document.createElement('h4');
-                        subtitle.textContent = subsection.subtitle;
-                        section.appendChild(subtitle);
-                    }
-                    if (Array.isArray(subsection.content)) {
-                        subsection.content.forEach(line => {
-                            const paragraph = document.createElement('p');
-                            paragraph.textContent = line;
-                            section.appendChild(paragraph);
-                        });
-                    }
-                    tabASections.appendChild(section);
-                });
-            }
-        })
+if (Array.isArray(tabAData.subsections)) {
+    tabAData.subsections.forEach(subsection => {
+        const section = document.createElement('div');
+        if (subsection.subtitle) {
+            const subtitle = document.createElement('h4');
+            subtitle.textContent = subsection.subtitle;
+            section.appendChild(subtitle);
+        }
+        if (Array.isArray(subsection.content)) {
+            subsection.content.forEach(line => {
+                const paragraph = document.createElement('p');
+                paragraph.innerHTML = line; // <-- Allow HTML tags like <a href=...>
+                section.appendChild(paragraph);
+            });
+        }
+        tabASections.appendChild(section);
+    });
+}        })
         .catch(error => {
             console.error(`Error loading ${textsFile}:`, error);
         });
@@ -201,8 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingScreen.classList.add('fade-out'); // Add fade-out class
         setTimeout(() => {
             loadingScreen.style.display = 'none'; // Hide after fade-out
-        }, 1000); // Match the duration of the CSS transition (1s)
-    }, 2500); // Wait 3 seconds before starting fade-out
+        }, 500); // Match the duration of the CSS transition (1s)
+    }, 1500); // Wait 1.5 seconds before starting fade-out
 
     closeButton.addEventListener('click', function () {
         // Hide the current window
@@ -249,47 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
         easterEggWindow.style.borderRadius = '8px';
         easterEggWindow.style.textAlign = 'center';
     });
-
-    fetch(textsFile)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            console.log(`Loaded texts from ${textsFile}:`, texts);
-            // Use the loaded texts to populate the page
-            // Example: Populate Tab-A content
-            const tabATitle = document.getElementById('tab-A-title');
-            const tabASections = document.getElementById('tab-A-sections');
-            const tabAData = texts.tabs['tab-A'];
-
-            tabATitle.textContent = tabAData.title || 'Default Title';
-            tabASections.innerHTML = ''; // Clear existing content
-
-            if (Array.isArray(tabAData.subsections)) {
-                tabAData.subsections.forEach(subsection => {
-                    const section = document.createElement('div');
-                    if (subsection.subtitle) {
-                        const subtitle = document.createElement('h4');
-                        subtitle.textContent = subsection.subtitle;
-                        section.appendChild(subtitle);
-                    }
-                    if (Array.isArray(subsection.content)) {
-                        subsection.content.forEach(line => {
-                            const paragraph = document.createElement('p');
-                            paragraph.textContent = line;
-                            section.appendChild(paragraph);
-                        });
-                    }
-                    tabASections.appendChild(section);
-                });
-            }
-        })
-        .catch(error => {
-            console.error(`Error loading ${textsFile}:`, error);
-        });
 
     fetch(textsFile)
         .then(response => {
