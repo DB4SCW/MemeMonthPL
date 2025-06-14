@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const eventStartDate = new Date('2025-06-15');
             const today = new Date();
 
-            if (today >= eventStartDate) {
+            if (today <= eventStartDate) {
                 // After the event start date
                 certificateInfo.textContent = texts.certificate.info_after;
                 certificateButton.textContent = texts.certificate.button_text;
