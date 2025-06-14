@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const tabs = document.querySelectorAll('[role="tab"]');
     const tabPanels = document.querySelectorAll('[role="tabpanel"]');
-    const langButtons = document.querySelectorAll('.lang-btn');
+    // const langButtons = document.querySelectorAll('.lang-btn'); // Removed unused variable
     const countdownElement = document.getElementById('countdown-timer');
     const closeButton = document.getElementById('close-button');
 
@@ -126,30 +126,46 @@ document.addEventListener('DOMContentLoaded', function () {
                                 emptyRow.innerHTML = `<td colspan="2" style="text-align: center;">${noDataMessage}</td>`;
                                 tbody.appendChild(emptyRow);
                             } else {
-                                // Populate the table with data, one entry per row
-                                data.forEach(entry => {
-                                    const row = document.createElement('tr');
+                            // Populate the table with data, one entry per row
+
+                            for (let i = 0; i < data.length; i += 2) {
+                                const row = document.createElement('tr');
+                                const entry1 = data[i];
+                                const entry2 = data[i + 1];
+
+                                if (entry2) {
                                     row.innerHTML = `
                                         <td style="text-align: center;">
-                                            ${entry ? `• <a href="https://qrz.com/db/${entry.callsign}" target="_blank">${entry.callsign}</a>` : ''}
-
-                                            ${entry ? `<img src="https://flagcdn.com/24x18/${entry.flag}.png" alt="${entry.flag}" title="${entry.flag}" style="margin-left: 10px;">` : ''}
+                                            ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                            ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
+                                        </td>
+                                        <td style="text-align: center;">
+                                            ${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}
+                                            ${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}" style="margin-left: 10px;">` : ''}
                                         </td>
                                     `;
-                                    tbody.appendChild(row);
-                                });
+                                } else {
+                                    row.innerHTML = `
+                                        <td colspan="2" style="text-align: center;">
+                                            ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                            ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
+                                        </td>
+                                    `;
+                                }
+                                tbody.appendChild(row);
                             }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
-                            tbody.innerHTML = `<tr><td colspan="2" style="text-align: center;">Error loading data</td></tr>`;
-                        });
-                });
-            })
-            .catch(error => {
-                console.error(`Error loading ${textsFile}:`, error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        tbody.innerHTML = `<tr><td colspan="2" style="text-align: center;">Error loading data</td></tr>`;
+                    });
             });
-    }
+        })
+        .catch(error => {
+            console.error(`Error loading ${textsFile}:`, error);
+        });
+}
 
     // Fetch the appropriate JSON file for other content
     fetch(textsFile)
@@ -170,25 +186,24 @@ document.addEventListener('DOMContentLoaded', function () {
             tabATitle.textContent = tabAData.title || 'Default Title';
             tabASections.innerHTML = ''; // Clear existing content
 
-            if (Array.isArray(tabAData.subsections)) {
-                tabAData.subsections.forEach(subsection => {
-                    const section = document.createElement('div');
-                    if (subsection.subtitle) {
-                        const subtitle = document.createElement('h4');
-                        subtitle.textContent = subsection.subtitle;
-                        section.appendChild(subtitle);
-                    }
-                    if (Array.isArray(subsection.content)) {
-                        subsection.content.forEach(line => {
-                            const paragraph = document.createElement('p');
-                            paragraph.textContent = line;
-                            section.appendChild(paragraph);
-                        });
-                    }
-                    tabASections.appendChild(section);
-                });
-            }
-        })
+if (Array.isArray(tabAData.subsections)) {
+    tabAData.subsections.forEach(subsection => {
+        const section = document.createElement('div');
+        if (subsection.subtitle) {
+            const subtitle = document.createElement('h4');
+            subtitle.textContent = subsection.subtitle;
+            section.appendChild(subtitle);
+        }
+        if (Array.isArray(subsection.content)) {
+            subsection.content.forEach(line => {
+                const paragraph = document.createElement('p');
+                paragraph.innerHTML = line; // <-- Allow HTML tags like <a href=...>
+                section.appendChild(paragraph);
+            });
+        }
+        tabASections.appendChild(section);
+    });
+}        })
         .catch(error => {
             console.error(`Error loading ${textsFile}:`, error);
         });
@@ -201,8 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingScreen.classList.add('fade-out'); // Add fade-out class
         setTimeout(() => {
             loadingScreen.style.display = 'none'; // Hide after fade-out
-        }, 1000); // Match the duration of the CSS transition (1s)
-    }, 2500); // Wait 3 seconds before starting fade-out
+        }, 500); // Match the duration of the CSS transition (1s)
+    }, 1500); // Wait 1.5 seconds before starting fade-out
 
     closeButton.addEventListener('click', function () {
         // Hide the current window
@@ -249,47 +264,6 @@ document.addEventListener('DOMContentLoaded', function () {
         easterEggWindow.style.borderRadius = '8px';
         easterEggWindow.style.textAlign = 'center';
     });
-
-    fetch(textsFile)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            console.log(`Loaded texts from ${textsFile}:`, texts);
-            // Use the loaded texts to populate the page
-            // Example: Populate Tab-A content
-            const tabATitle = document.getElementById('tab-A-title');
-            const tabASections = document.getElementById('tab-A-sections');
-            const tabAData = texts.tabs['tab-A'];
-
-            tabATitle.textContent = tabAData.title || 'Default Title';
-            tabASections.innerHTML = ''; // Clear existing content
-
-            if (Array.isArray(tabAData.subsections)) {
-                tabAData.subsections.forEach(subsection => {
-                    const section = document.createElement('div');
-                    if (subsection.subtitle) {
-                        const subtitle = document.createElement('h4');
-                        subtitle.textContent = subsection.subtitle;
-                        section.appendChild(subtitle);
-                    }
-                    if (Array.isArray(subsection.content)) {
-                        subsection.content.forEach(line => {
-                            const paragraph = document.createElement('p');
-                            paragraph.textContent = line;
-                            section.appendChild(paragraph);
-                        });
-                    }
-                    tabASections.appendChild(section);
-                });
-            }
-        })
-        .catch(error => {
-            console.error(`Error loading ${textsFile}:`, error);
-        });
 
     fetch(textsFile)
         .then(response => {
@@ -884,41 +858,10 @@ function loadTabOWOContent() {
         });
 }
 
-// Function to handle Tab-B content
-function loadTabBContentWithFetch() {
-    fetch(textsFile)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(texts => {
-            const tabBData = texts.tabs['tab-B'];
-            const tabBTitle = document.getElementById('tab-B-title');
-            const tabBContent = document.getElementById('tab-B-content');
-
-            // Set the title
-            tabBTitle.textContent = tabBData.title;
-
-            // Populate the content
-            tabBContent.innerHTML = ''; // Clear existing content
-            tabBData.content.forEach(line => {
-                const paragraph = document.createElement('p');
-                paragraph.innerHTML = line; // Use innerHTML to render HTML content
-                tabBContent.appendChild(paragraph);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading Tab-B content:', error);
-        });
-}
 
 // Add event listener for Tab-OWO
 document.querySelector('[aria-controls="tab-OWO"]').addEventListener('click', loadTabOWOContent);
 
-// Add event listener for Tab-B
-document.querySelector('[aria-controls="tab-B"]').addEventListener('click', loadTabBContentWithFetch);
 
 // Call the progress bar update function after the page loads and set an interval to update it every minute
 updateEventProgressBar();

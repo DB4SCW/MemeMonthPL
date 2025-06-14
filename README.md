@@ -1,6 +1,6 @@
-# Miesiąc Memów PL
+# Miesiąc Memów
 
-Projekt strony multi-zakładkowej utrzymany w stylu pierwotnej macierzystej strony akcji dyplomowej https://mememonth.org/ i z polskimi akcentami
+Projekt strony multi-zakładkowej utrzymany w stylu pierwotnej macierzystej strony akcji dyplomowej https://mememonth.org/ z możliwością dodania dodatkowych języków i modyfikacji lekkich.
 
 ## Po co?
 
