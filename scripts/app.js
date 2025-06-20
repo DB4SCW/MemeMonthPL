@@ -136,18 +136,18 @@ document.addEventListener('DOMContentLoaded', function () {
                                 if (entry2) {
                                     row.innerHTML = `
                                         <td style="text-align: center;">
-                                            ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                            ${entry1 ? `• <a href="${entry1.url}" target="_blank">${entry1.callsign}</a>` : ''}
                                             ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
                                         </td>
                                         <td style="text-align: center;">
-                                            ${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}
+                                            ${entry2 ? `• <a href="${entry2.url}" target="_blank">${entry2.callsign}</a>` : ''}
                                             ${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}" style="margin-left: 10px;">` : ''}
                                         </td>
                                     `;
                                 } else {
                                     row.innerHTML = `
                                         <td colspan="2" style="text-align: center;">
-                                            ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                            ${entry1 ? `• <a href="${entry1.url}" target="_blank">${entry1.callsign}</a>` : ''}
                                             ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
                                         </td>
                                     `;
@@ -468,11 +468,11 @@ if (Array.isArray(tabAData.subsections)) {
                                         // If there are two entries, create a normal row
                                         row.innerHTML = `
                                             <td style="text-align: center;">
-                                                ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                                ${entry1 ? `• <a href="${entry1.url}" target="_blank">${entry1.callsign}</a>` : ''}
                                                 ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
                                             </td>
                                             <td style="text-align: center;">
-                                                ${entry2 ? `• <a href="https://qrz.com/db/${entry2.callsign}" target="_blank">${entry2.callsign}</a>` : ''}
+                                                ${entry2 ? `• <a href="${entry2.url}" target="_blank">${entry2.callsign}</a>` : ''}
                                                 ${entry2 ? `<img src="https://flagcdn.com/24x18/${entry2.flag}.png" alt="${entry2.flag}" title="${entry2.flag}" style="margin-left: 10px;">` : ''}
                                             </td>
                                         `;
@@ -480,7 +480,7 @@ if (Array.isArray(tabAData.subsections)) {
                                         // If there is only one entry, span it across all columns
                                         row.innerHTML = `
                                             <td colspan="2" style="text-align: center;">
-                                                ${entry1 ? `• <a href="https://qrz.com/db/${entry1.callsign}" target="_blank">${entry1.callsign}</a>` : ''}
+                                                ${entry1 ? `• <a href="${entry1.url}" target="_blank">${entry1.callsign}</a>` : ''}
                                                 ${entry1 ? `<img src="https://flagcdn.com/24x18/${entry1.flag}.png" alt="${entry1.flag}" title="${entry1.flag}" style="margin-left: 10px;">` : ''}
                                             </td>
                                         `;
